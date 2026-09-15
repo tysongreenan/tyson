@@ -2,15 +2,38 @@ import type { ReactNode } from "react";
 import { A } from "@/components/a";
 
 export type Featured = {
-  repo: string;
+  /** GitHub repo name, or null when the source is private. */
+  repo: string | null;
+  slug: string;
   title: string;
   href: string;
+  /** Public production URL, shown as a "live" link. */
+  live?: string;
+  /** YYYY-MM the project started. */
+  date: string;
   body: ReactNode;
 };
 
 export const featured: Featured[] = [
   {
+    repo: null,
+    slug: "website-feedback",
+    title: "Website Feedback",
+    href: "https://websitefeedback.ca",
+    live: "https://websitefeedback.ca",
+    date: "2026-01",
+    body: (
+      <>
+        A visual website feedback tool. Reviewers leave comments directly on any live URL with no extensions and no
+        sign-up, so design teams and agencies can collect feedback and run launch checklists in one place. This is the
+        product I spend most of my time on.
+      </>
+    ),
+  },
+  {
     repo: "claude-code-webapp-boilerplate",
+    slug: "claude-code-webapp-boilerplate",
+    date: "2026-04",
     title: "Claude Code Webapp Boilerplate",
     href: "https://github.com/tysongreenan/claude-code-webapp-boilerplate",
     body: (
@@ -27,6 +50,9 @@ export const featured: Featured[] = [
   },
   {
     repo: "Gryphon",
+    slug: "gryphon",
+    date: "2026-07",
+    live: "https://gryphon-self.vercel.app",
     title: "Gryphon",
     href: "https://gryphon-self.vercel.app",
     body: (
@@ -40,6 +66,8 @@ export const featured: Featured[] = [
   },
   {
     repo: "tastetest",
+    slug: "tastetest",
+    date: "2026-07",
     title: "Panel",
     href: "https://github.com/tysongreenan/tastetest",
     body: (
@@ -52,6 +80,8 @@ export const featured: Featured[] = [
   },
   {
     repo: "northgate",
+    slug: "northgate",
+    date: "2026-08",
     title: "Northgate",
     href: "https://github.com/tysongreenan/northgate",
     body: (
@@ -63,6 +93,8 @@ export const featured: Featured[] = [
   },
   {
     repo: "tybow-ui",
+    slug: "tybow-ui",
+    date: "2026-09",
     title: "Tybow UI",
     href: "https://github.com/tysongreenan/tybow-ui",
     body: (
@@ -74,6 +106,8 @@ export const featured: Featured[] = [
   },
   {
     repo: "remotion-boilerplate",
+    slug: "remotion-boilerplate",
+    date: "2026-06",
     title: "Remotion Boilerplate",
     href: "https://github.com/tysongreenan/remotion-boilerplate",
     body: (
@@ -86,6 +120,9 @@ export const featured: Featured[] = [
   },
   {
     repo: "marduk-aeo",
+    slug: "marduk-aeo",
+    date: "2025-03",
+    live: "https://marduk-aeo.vercel.app",
     title: "Marduk AEO",
     href: "https://marduk-aeo.vercel.app",
     body: (
@@ -98,17 +135,24 @@ export const featured: Featured[] = [
   },
   {
     repo: "uk-cookie-consent",
-    title: "UK Cookie Consent",
-    href: "https://tysongreenan1-cookie-consent.vercel.app",
+    slug: "uk-cookie-consent",
+    date: "2025-10",
+    live: "https://cookiebanner.ca",
+    title: "Cookie Banner",
+    href: "https://cookiebanner.ca",
     body: (
       <>
-        A GDPR-compliant cookie consent banner builder. Configure the banner, copy the snippet, ship it (
-        <A href="https://github.com/tysongreenan/uk-cookie-consent">source</A>).
+        A cookie consent banner builder for Canadian and UK privacy law. Design the banner, pick the local compliance
+        rules, copy the snippet and ship it. Started in 2025 as an open source GDPR tool and now runs as a product at
+        cookiebanner.ca (<A href="https://github.com/tysongreenan/uk-cookie-consent">source</A>).
       </>
     ),
   },
   {
     repo: "STM_Tunneling_Animation",
+    slug: "stm-tunneling-animation",
+    date: "2025-09",
+    live: "https://stm-tunneling-animation.vercel.app",
     title: "STM Tunneling Simulator",
     href: "https://stm-tunneling-animation.vercel.app",
     body: (
@@ -125,7 +169,7 @@ export const featured: Featured[] = [
 export const hidden = new Set<string>(["shipwithclaude", "claude-code-webapp-boilerplate-supabase", "showoff", "showoff2", "copy-canvas-capture", "welcome-youtube", "zero-friction-crm"]);
 
 /** Optional friendlier names and descriptions for repos in the auto-generated list. */
-export const overrides: Record<string, { title?: string; description?: string }> = {
+export const overrides: Record<string, { title?: string; description?: string; live?: string }> = {
   "doomsday-watch-order": { title: "Doomsday Watch Order", description: "A public prep watch order for Avengers: Doomsday across the MCU, X-Men and Fantastic Four." },
   "terraza-del-pacifico": { title: "Hotel Terraza del Pacífico", description: "Server-rendered Next.js rebuild of a hotel website, done for SEO at Sway Advertising." },
   "mws-price-dashboard": { title: "Bin Rental Pricing Dashboard", description: "Pricing intelligence dashboard for the waste bin rental market." },
@@ -134,7 +178,7 @@ export const overrides: Record<string, { title?: string; description?: string }>
   "mindmap-visualizer": { title: "Mindmap Visualizer" },
   "airport_route_map": { title: "Airport Route Map", description: "Interactive map of airport routes." },
   "Champaign-Glass": { title: "Champaign Glass" },
-  "sway-website": { title: "Sway Advertising", description: "Website for Sway Advertising." },
+  "sway-website": { title: "Sway Advertising", description: "Website for Sway Advertising, my marketing agency.", live: "https://sway.ca" },
   funnelhero: { title: "FunnelHero", description: "A SaaS marketing tool to help marketers plan and bring together assets for a funnel." },
   sitemapai: { title: "SitemapAI" },
 };

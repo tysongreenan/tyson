@@ -5,6 +5,7 @@ import snapshot from "@/content/repos.json";
 export type Repo = {
   name: string;
   title: string;
+  live: string | null;
   description: string | null;
   html_url: string;
   homepage: string | null;
@@ -38,7 +39,7 @@ export async function getOtherRepos(): Promise<Repo[]> {
     console.warn("GitHub fetch failed, using snapshot:", err);
     repos = snapshot as GhRepo[];
   }
-  const featuredNames = new Set(featured.map((f) => f.repo));
+  const featuredNames = new Set(featured.map((f) => f.repo).filter(Boolean));
   return repos
     .filter((r) => !r.fork && !r.archived && !featuredNames.has(r.name) && !hidden.has(r.name))
     .sort((a, b) => b.created_at.localeCompare(a.created_at))
@@ -48,6 +49,7 @@ export async function getOtherRepos(): Promise<Repo[]> {
         ...r,
         title: o.title ?? r.name,
         description: o.description ?? r.description,
+        live: o.live ?? r.homepage ?? null,
       };
     });
 }

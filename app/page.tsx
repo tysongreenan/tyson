@@ -10,7 +10,8 @@ export default function About() {
         can.
       </p>
       <p className="mt-7">
-        Most of my recent work is about making Claude Code and similar agents productive on real products: boilerplates
+        My main product is <A href="https://websitefeedback.ca">Website Feedback</A>, a visual feedback tool for agencies and
+        design teams. Much of my other recent work is about making Claude Code and similar agents productive on real products: boilerplates
         designed to be driven by an agent, a buyer panel that reviews your product from inside the repo, and a
         reliability layer for agents that need to stay logged in to the web.
       </p>
