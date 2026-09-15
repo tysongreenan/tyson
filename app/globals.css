@@ -1,26 +1,50 @@
 @import "tailwindcss";
 
+@custom-variant mobile (@media (min-width: 480px));
+
+@theme {
+  --color-rurikon-50: #ebedef;
+  --color-rurikon-100: #d8dbdf;
+  --color-rurikon-200: #b3b9c1;
+  --color-rurikon-300: #8c95a1;
+  --color-rurikon-400: #697381;
+  --color-rurikon-500: #4a515b;
+  --color-rurikon-600: #3b4149;
+  --color-rurikon-700: #2b3035;
+  --color-rurikon-800: #1e2125;
+  --color-rurikon-border: #d8dbdfb3;
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fcfcfc;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: only light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  font-synthesis: none;
+  font-variation-settings: "wght" 440;
+  font-variant: common-ligatures contextual;
+  font-optical-sizing: auto;
+  letter-spacing: 0.0085em;
+  word-spacing: -0.04em;
+  text-rendering: geometricPrecision;
+  -webkit-tap-highlight-color: transparent;
+}
+
+main {
+  hanging-punctuation: first allow-end last;
+}
+
+.link {
+  @apply break-words underline underline-offset-2 decoration-rurikon-300 hover:decoration-rurikon-600 transition-colors;
+  text-decoration-thickness: from-font;
+}
+
+.content-fade-out {
+  background: linear-gradient(to bottom, var(--background), transparent);
 }
