@@ -2,5 +2,5 @@ export const site = {
   name: "Tyson Greenan",
   github: "tysongreenan",
   url: "https://tysongreenan.com",
-  tagline: "Founder of Sway Advertising. Building tools for marketers, agencies, and AI agents.",
+  tagline: "Developer and digital marketer at Sway. Building Cookie Banner, Website Feedback, and client websites.",
 };

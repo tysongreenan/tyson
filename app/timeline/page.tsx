@@ -11,8 +11,9 @@ export default async function Timeline() {
     <>
       <h1 className="font-semibold mb-7 text-rurikon-600 text-balance">Timeline</h1>
       <p className="mt-7">
-        Everything I have shipped or started, newest first. Dates come from when each repo was created. Projects with a
-        green dot are live. The <A href="/projects">projects</A> page has the write-ups.
+        Everything I have shipped or started, newest first — side products and Sway client websites mixed in. Dates come
+        from when each project started. Projects with a green dot are live. The <A href="/projects">projects</A> page
+        has the write-ups.
       </p>
       {[...byYear.entries()].map(([year, entries]) => (
         <section key={year}>
