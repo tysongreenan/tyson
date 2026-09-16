@@ -57,8 +57,9 @@ export default async function Projects() {
         For Sway
       </h2>
       <p className="mt-7">
-        Client websites built at the agency. Home builders, a hotel, cottages, and the Sway site itself — the same
-        kind of work as the products, just for someone else.
+        Client websites built at the agency, plus a CMS so Nova Golf can edit their site without a deploy. Home
+        builders, a hotel, cottages, and the Sway site itself — the same kind of work as the products, just for
+        someone else.
       </p>
       <ul className="mt-7 space-y-4">
         {clients.map((c) => (

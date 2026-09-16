@@ -107,6 +107,16 @@ export const clients: Client[] = [
     blurb: "Golf media site, in progress for Sway.",
   },
   {
+    repo: "nova-golf-cms",
+    slug: "nova-golf-cms",
+    date: "2026-08",
+    title: "Nova Golf CMS",
+    href: "https://nova-golf-cms.vercel.app",
+    live: "https://nova-golf-cms.vercel.app",
+    mark: "/projects/nova-golf.svg",
+    blurb: "Payload CMS for Nova Golf. They edit the media site from a dashboard without a deploy.",
+  },
+  {
     repo: "birch-island-cottage",
     slug: "birch-island-cottage",
     date: "2026-06",
@@ -156,6 +166,7 @@ export const hidden = new Set<string>([
   "Miller-Waste-Systems",
   "birch-island-cottage",
   "nova-golf-media",
+  "nova-golf-cms",
   "wrighthaven-clone",
   "uk-cookie-consent",
 ]);

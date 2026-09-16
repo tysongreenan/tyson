@@ -16,9 +16,9 @@ export default function About() {
         static codes are free and stay in the browser. They are the tools I wished existed, so I shipped them.
       </p>
       <p className="mt-7">
-        The other half of the job is client sites at Sway: a custom home builder, a hotel, cottages, and the agency
-        site itself. I care about search — including how those sites show up in AI answers — and about software that
-        marketing teams will actually use.
+        The other half of the job is client sites at Sway: a custom home builder, a hotel, cottages, a CMS for a golf
+        media site, and the agency site itself. I care about search — including how those sites show up in AI answers
+        — and about software that marketing teams will actually use.
       </p>
       <p className="mt-7">
         Outside of work I am usually on another side project, or out walking with my dog Luna.
