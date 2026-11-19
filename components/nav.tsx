@@ -7,6 +7,7 @@ const items = [
   { href: "/", label: "About" },
   { href: "/projects", label: "Projects" },
   { href: "/timeline", label: "Timeline" },
+  { href: "/toolkit", label: "Toolkit" },
 ];
 
 export function Nav() {
