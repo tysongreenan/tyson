@@ -11,8 +11,8 @@ export default async function Timeline() {
     <>
       <h1 className="font-semibold mb-7 text-rurikon-600 text-balance">Timeline</h1>
       <p className="mt-7">
-        Everything I have shipped or started, newest first — side products and Sway client websites mixed in. Dates come
-        from when each project started. Projects with a green dot are live. The <A href="/projects">projects</A> page
+        Everything I have shipped or started, newest first: side products, tools for Sway, client websites and apps,
+        and experiments. Dates come from when each project started. Projects with a green dot are live. The <A href="/projects">projects</A> page
         has the write-ups.
       </p>
       {[...byYear.entries()].map(([year, entries]) => (
@@ -24,6 +24,10 @@ export default async function Timeline() {
                 <span className="w-8 shrink-0 text-rurikon-300 tabular-nums text-[0.85em]">{monthName(e.date)}</span>
                 <span>
                   <A href={e.featuredSlug ? `/projects#${e.featuredSlug}` : e.href}>{e.title}</A>
+                  <span className="ml-3 text-[0.8em] text-rurikon-300">
+                    {e.kind}
+                    {e.status ? `, ${e.status.toLowerCase()}` : ""}
+                  </span>
                   {e.live ? <Live url={e.live} className="ml-3" /> : null}
                 </span>
               </li>

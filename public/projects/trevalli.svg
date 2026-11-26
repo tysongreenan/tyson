@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Trevalli Homes">
+  <g
+    fill="none"
+    stroke="#e51937"
+    stroke-width="4.25"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M4.6 13.8c5.2-6.2 13.9-6.75 22.5-2.45" />
+    <path
+      d="M15.2 10.3c-.05 5.6.05 12.4.35 14.9c.35 1.35 1.7 1.7 4.85 1.55c.15-2.7.1-6.3 0-9.6"
+    />
+    <path d="M20.4 26.55c3.3.15 6.2-.05 8.35-.55" />
+  </g>
+</svg>

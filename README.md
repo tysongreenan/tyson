@@ -5,7 +5,7 @@ Personal site with an About page and a Projects page, modeled on the layout of s
 ## Editing content
 
 - `content/site.ts` — name, GitHub username, site URL, tagline.
-- `content/projects.tsx` — the featured projects (title, link, write-up), the `hidden` set of repos to leave off the list, and `overrides` for nicer names/descriptions.
+- `content/projects.tsx` — the featured projects (products, Sway tools, client sites, business apps). Only set `live` when the client's domain actually serves this build; if the client kept or launched a different site, link `href` to the vercel.app deployment and set `status` instead. The file also holds the `hidden` set of repos to leave off the list, and `overrides` for nicer names/descriptions.
 - `content/repos.json` — snapshot of public repos, used as a fallback if the GitHub API is unreachable. Refresh with:
 
 ```sh

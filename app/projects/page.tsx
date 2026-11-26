@@ -1,12 +1,62 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { A } from "@/components/a";
 import { Live } from "@/components/live";
 import { ClientMark, Wordmark } from "@/components/project-logo";
-import { clients, products } from "@/content/projects";
+import { apps, clients, products, swayTools, type Project } from "@/content/projects";
 import { site } from "@/content/site";
 import { getOtherRepos } from "@/lib/github";
 
 export const metadata: Metadata = { title: "Projects" };
+
+function Heading({ id, children }: { id: string; children: ReactNode }) {
+  return (
+    <h2
+      id={id}
+      className="group relative font-semibold mt-14 mb-7 text-rurikon-600 text-balance scroll-mt-6 sm:scroll-mt-14"
+    >
+      <a
+        href={`#${id}`}
+        aria-label="Link to this section"
+        className="absolute md:w-14 sm:w-10 mobile:w-6 w-6 -translate-x-[calc(100%-2px)] text-center opacity-0 blur-xs group-hover:opacity-100 group-hover:blur-none text-rurikon-200 hover:text-rurikon-500 transition-all duration-500 group-hover:delay-300 group-target:opacity-100 group-target:blur-none select-none"
+      >
+        #
+      </a>
+      {children}
+    </h2>
+  );
+}
+
+function Stack({ items }: { items: string[] }) {
+  if (!items.length) return null;
+  return <span className="block text-[0.8em] text-rurikon-300">{items.join(" · ")}</span>;
+}
+
+function ProjectList({ items }: { items: Project[] }) {
+  return (
+    <ul className="mt-7 space-y-5">
+      {items.map((p) => (
+        <li key={p.slug} id={p.slug} className="flex gap-3 items-start scroll-mt-6 sm:scroll-mt-14">
+          <ClientMark src={p.mark} title={p.title} />
+          <span className="min-w-0 pt-0.5">
+            <span className="flex flex-wrap items-baseline gap-x-3">
+              {p.href ? <A href={p.href}>{p.title}</A> : <span className="text-rurikon-600">{p.title}</span>}
+              {p.live ? <Live url={p.live} /> : null}
+              {p.status ? <span className="text-[0.8em] text-rurikon-300">{p.status}</span> : null}
+              {p.source ? (
+                <span className="text-[0.8em] text-rurikon-300">
+                  <A href={p.source}>source</A>
+                </span>
+              ) : null}
+            </span>
+            <span className="block text-rurikon-400">{p.blurb}</span>
+            <Stack items={p.stack} />
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default async function Projects() {
   const others = await getOtherRepos();
@@ -14,67 +64,54 @@ export default async function Projects() {
     <>
       <h1 className="font-semibold mb-7 text-rurikon-600 text-balance">Projects</h1>
       <p className="mt-7">
-        Products I ship on the side, and websites I build for clients at{" "}
-        <A href="https://sway.ca">Sway Advertising</A>. Most of the product work is live; the client sites are the
-        day-to-day at the agency. See the <A href="/timeline">timeline</A> for everything in order.
+        Products I ship on the side, the software I build to run <A href="https://sway.ca">Sway Advertising</A>, and the
+        websites and apps I build for clients. See the <A href="/timeline">timeline</A> for everything in order.
       </p>
 
       {products.map((p) => (
         <section key={p.slug}>
-          <h2
-            id={p.slug}
-            className="group relative font-semibold mt-14 mb-7 text-rurikon-600 text-balance scroll-mt-6 sm:scroll-mt-14"
-          >
-            <a
-              href={`#${p.slug}`}
-              aria-label="Link to this section"
-              className="absolute md:w-14 sm:w-10 mobile:w-6 w-6 -translate-x-[calc(100%-2px)] text-center opacity-0 blur-xs group-hover:opacity-100 group-hover:blur-none text-rurikon-200 hover:text-rurikon-500 transition-all duration-500 group-hover:delay-300 group-target:opacity-100 group-target:blur-none select-none"
-            >
-              #
-            </a>
-            <A href={p.href} title={p.title}>
-              <Wordmark src={p.logo.src} alt={p.title} height={p.logo.height} />
-            </A>
+          <Heading id={p.slug}>
+            {p.href ? (
+              <A href={p.href} title={p.title}>
+                {p.logo ? <Wordmark src={p.logo.src} alt={p.title} height={p.logo.height} /> : p.title}
+              </A>
+            ) : (
+              p.title
+            )}
             {p.live ? <Live url={p.live} className="ml-3 font-normal align-middle" /> : null}
-          </h2>
-          <p className="mt-7">{p.body}</p>
+          </Heading>
+          <p className="mt-7">{p.body ?? p.blurb}</p>
+          <p className="mt-2">
+            <Stack items={p.stack} />
+          </p>
         </section>
       ))}
 
       <hr className="my-14 border-0 h-px bg-rurikon-border" />
 
-      <h2
-        id="sway"
-        className="group relative font-semibold mt-14 mb-7 text-rurikon-600 text-balance scroll-mt-6 sm:scroll-mt-14"
-      >
-        <a
-          href="#sway"
-          aria-label="Link to this section"
-          className="absolute md:w-14 sm:w-10 mobile:w-6 w-6 -translate-x-[calc(100%-2px)] text-center opacity-0 blur-xs group-hover:opacity-100 group-hover:blur-none text-rurikon-200 hover:text-rurikon-500 transition-all duration-500 group-hover:delay-300 group-target:opacity-100 group-target:blur-none select-none"
-        >
-          #
-        </a>
-        For Sway
-      </h2>
+      <Heading id="sway-tools">Tools for Sway</Heading>
       <p className="mt-7">
-        Client websites built at the agency, plus a CMS so Nova Golf can edit their site without a deploy. Home
-        builders, a hotel, cottages, and the Sway site itself — the same kind of work as the products, just for
-        someone else.
+        Internal software the agency runs on: an AI operating system for the team, a way for clients to edit their own
+        sites, a shared CMS, and a component library for client sites.
       </p>
-      <ul className="mt-7 space-y-4">
-        {clients.map((c) => (
-          <li key={c.slug} id={c.slug} className="flex gap-3 items-start scroll-mt-6 sm:scroll-mt-14">
-            <ClientMark src={c.mark} alt="" />
-            <span className="min-w-0 pt-0.5">
-              <span className="flex flex-wrap items-baseline gap-x-3">
-                <A href={c.href}>{c.title}</A>
-                {c.live ? <Live url={c.live} /> : null}
-              </span>
-              <span className="block text-rurikon-400">{c.blurb}</span>
-            </span>
-          </li>
-        ))}
-      </ul>
+      <ProjectList items={swayTools} />
+
+      <hr className="my-14 border-0 h-px bg-rurikon-border" />
+
+      <Heading id="client-websites">Client websites</Heading>
+      <p className="mt-7">
+        Websites I build at Sway: home builders, a hotel, a cottage, a coaching business, a golf media site with its own
+        CMS, and the Sway site itself.
+      </p>
+      <ProjectList items={clients} />
+
+      <hr className="my-14 border-0 h-px bg-rurikon-border" />
+
+      <Heading id="apps">Business apps</Heading>
+      <p className="mt-7">
+        Custom software for specific companies, from working prototypes to apps in active development.
+      </p>
+      <ProjectList items={apps} />
 
       <hr className="my-14 border-0 h-px bg-rurikon-border" />
 

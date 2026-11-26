@@ -20,11 +20,18 @@ export function Wordmark({
   );
 }
 
-/** Small square mark for the Sway client list. */
-export function ClientMark({ src, alt }: { src: string; alt: string }) {
+/** Small square mark for project lists. Falls back to the first letter of the title. */
+export function ClientMark({ src, title }: { src?: string; title: string }) {
   return (
-    <span className="inline-flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-md bg-white p-0.5 outline outline-black/10">
-      <img src={src} alt={alt} draggable={false} className="size-full object-contain" />
+    <span
+      aria-hidden
+      className="inline-flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-md bg-white p-0.5 outline outline-black/10"
+    >
+      {src ? (
+        <img src={src} alt="" draggable={false} className="size-full object-contain" />
+      ) : (
+        <span className="text-[0.8rem] font-semibold text-rurikon-400">{title.charAt(0)}</span>
+      )}
     </span>
   );
 }
