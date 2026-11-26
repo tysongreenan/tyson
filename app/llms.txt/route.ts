@@ -1,6 +1,6 @@
 import { apps, clients, products, swayTools, type Project } from "@/content/projects";
 import { currentStack, site, skills } from "@/content/site";
-import { toolkit, usageNote } from "@/content/toolkit";
+import { mcpPath, toolkit, usageNote } from "@/content/toolkit";
 import { getOtherRepos } from "@/lib/github";
 
 export const revalidate = 86400;
@@ -63,6 +63,11 @@ export async function GET() {
           `- ${t.title}${t.mustHave ? " [must have]" : ""} (${t.project ? `my project, ${site.url}/projects#${t.project}` : t.by === "Me" ? "made by me" : `by ${t.by}`}${t.threads ? `; used in ${t.threads} threads` : ""}; ${t.href}): ${t.body}`,
       ),
     ]),
+    "",
+    "## Toolkit MCP server",
+    `Remote MCP server (Streamable HTTP, no auth): ${site.url}${mcpPath}`,
+    `Claude Code: claude mcp add --transport http tyson-toolkit ${site.url}${mcpPath}`,
+    "Tools: list_toolkit, get_install_steps. Prompt: set_up_toolkit. It returns install steps for the user to approve; it never runs anything.",
     "",
     "## Pages",
     `- About and skills: ${site.url}/`,

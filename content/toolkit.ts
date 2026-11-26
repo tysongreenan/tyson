@@ -19,6 +19,9 @@ export type ToolGroup = { slug: string; label: string; intro?: string; tools: To
 export const usageNote =
   "Counts are T3 Code threads where an agent called the tool, out of about 2,300 threads from October 6 to November 26, 2026.";
 
+/** Public MCP endpoint (app/mcp/route.ts) that hands this toolkit and its install steps to other people's agents. */
+export const mcpPath = "/mcp";
+
 /** MCP servers, agent skills and toolkits I use. The first group is the default tab. */
 export const toolkit: ToolGroup[] = [
   {
