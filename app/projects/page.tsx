@@ -9,7 +9,7 @@ import { getOtherRepos } from "@/lib/github";
 
 export const metadata: Metadata = { title: "Projects" };
 
-function Heading({ id, children }: { id: string; children: ReactNode }) {
+function Heading({ id, label, children }: { id: string; label: string; children: ReactNode }) {
   return (
     <h2
       id={id}
@@ -17,8 +17,8 @@ function Heading({ id, children }: { id: string; children: ReactNode }) {
     >
       <a
         href={`#${id}`}
-        aria-label="Link to this section"
-        className="absolute md:w-14 sm:w-10 mobile:w-6 w-6 -translate-x-[calc(100%-2px)] text-center opacity-0 blur-xs group-hover:opacity-100 group-hover:blur-none text-rurikon-200 hover:text-rurikon-500 transition-all duration-500 group-hover:delay-300 group-target:opacity-100 group-target:blur-none select-none"
+        aria-label={`Link to the ${label} section`}
+        className="absolute md:w-14 sm:w-10 mobile:w-6 w-6 -translate-x-[calc(100%-2px)] text-center opacity-0 blur-xs group-hover:opacity-100 group-hover:blur-none focus-visible:opacity-100 focus-visible:blur-none pointer-coarse:opacity-100 pointer-coarse:blur-none text-rurikon-400 hover:text-rurikon-700 transition-all duration-500 group-hover:delay-300 group-target:opacity-100 group-target:blur-none select-none"
       >
         #
       </a>
@@ -29,7 +29,7 @@ function Heading({ id, children }: { id: string; children: ReactNode }) {
 
 function Stack({ items }: { items: string[] }) {
   if (!items.length) return null;
-  return <span className="block text-[0.8em] text-rurikon-300">{items.join(" · ")}</span>;
+  return <span className="block text-[0.8em] text-rurikon-400">{items.join(" · ")}</span>;
 }
 
 function ProjectList({ items }: { items: Project[] }) {
@@ -42,9 +42,9 @@ function ProjectList({ items }: { items: Project[] }) {
             <span className="flex flex-wrap items-baseline gap-x-3">
               {p.href ? <A href={p.href}>{p.title}</A> : <span className="text-rurikon-600">{p.title}</span>}
               {p.live ? <Live url={p.live} /> : null}
-              {p.status ? <span className="text-[0.8em] text-rurikon-300">{p.status}</span> : null}
+              {p.status ? <span className="text-[0.8em] text-rurikon-400">{p.status}</span> : null}
               {p.source ? (
-                <span className="text-[0.8em] text-rurikon-300">
+                <span className="text-[0.8em] text-rurikon-400">
                   <A href={p.source}>source</A>
                 </span>
               ) : null}
@@ -70,10 +70,10 @@ export default async function Projects() {
 
       {products.map((p) => (
         <section key={p.slug}>
-          <Heading id={p.slug}>
+          <Heading id={p.slug} label={p.title}>
             {p.href ? (
               <A href={p.href} title={p.title}>
-                {p.logo ? <Wordmark src={p.logo.src} alt={p.title} height={p.logo.height} /> : p.title}
+                {p.logo ? <Wordmark src={p.logo.src} alt={p.title} height={p.logo.height} width={p.logo.width} /> : p.title}
               </A>
             ) : (
               p.title
@@ -89,7 +89,7 @@ export default async function Projects() {
 
       <hr className="my-14 border-0 h-px bg-rurikon-border" />
 
-      <Heading id="sway-tools">Tools for Sway</Heading>
+      <Heading id="sway-tools" label="Tools for Sway">Tools for Sway</Heading>
       <p className="mt-7">
         Internal software the agency runs on: an AI operating system for the team, a way for clients to edit their own
         sites, a shared CMS, and a component library for client sites.
@@ -98,7 +98,7 @@ export default async function Projects() {
 
       <hr className="my-14 border-0 h-px bg-rurikon-border" />
 
-      <Heading id="client-websites">Client websites</Heading>
+      <Heading id="client-websites" label="Client websites">Client websites</Heading>
       <p className="mt-7">
         Websites I build at Sway: home builders, a hotel, a cottage, a coaching business, a golf media site with its own
         CMS, and the Sway site itself.
@@ -107,7 +107,7 @@ export default async function Projects() {
 
       <hr className="my-14 border-0 h-px bg-rurikon-border" />
 
-      <Heading id="apps">Business apps</Heading>
+      <Heading id="apps" label="Business apps">Business apps</Heading>
       <p className="mt-7">
         Custom software for specific companies, from working prototypes to apps in active development.
       </p>
@@ -127,7 +127,7 @@ export default async function Projects() {
               <>
                 {" "}
                 <Live url={r.live} />{" "}
-                <span className="text-rurikon-300">
+                <span className="text-rurikon-400">
                   (<A href={r.html_url}>source</A>)
                 </span>
               </>

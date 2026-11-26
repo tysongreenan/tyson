@@ -74,7 +74,7 @@ export function Tabs({ label, tabs }: { label: string; tabs: Tab[] }) {
         ref={list}
         role="tablist"
         aria-label={label}
-        className="flex gap-4 sm:gap-6 overflow-x-auto border-b border-rurikon-border"
+        className="tab-scroller flex gap-4 sm:gap-6 overflow-x-auto border-b border-rurikon-border"
         {...({ focusgroup: "tablist nomemory" } as object)}
       >
         {tabs.map((t, i) => (
@@ -86,7 +86,7 @@ export function Tabs({ label, tabs }: { label: string; tabs: Tab[] }) {
             aria-selected={i === selected}
             onFocus={() => setSelected(i)}
             onClick={() => setSelected(i)}
-            className="relative flex-none pb-2 text-rurikon-300 hover:text-rurikon-600 transition-colors aria-selected:text-rurikon-700 aria-selected:after:absolute aria-selected:after:inset-x-0 aria-selected:after:bottom-[-1px] aria-selected:after:border-b-2 aria-selected:after:border-current focus-visible:outline focus-visible:outline-dotted focus-visible:outline-rurikon-400"
+            className="relative flex-none pb-2 pointer-coarse:min-h-11 text-rurikon-400 hover:text-rurikon-700 transition-colors aria-selected:text-rurikon-700 aria-selected:after:absolute aria-selected:after:inset-x-0 aria-selected:after:bottom-[-1px] aria-selected:after:border-b-2 aria-selected:after:border-current focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dotted focus-visible:outline-rurikon-400"
             {...((i === selected ? { focusgroupstart: "" } : {}) as object)}
           >
             {t.label}

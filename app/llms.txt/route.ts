@@ -71,6 +71,7 @@ export async function GET() {
     "",
     "## Pages",
     `- About and skills: ${site.url}/`,
+    `- Resume (with schema.org Person JSON-LD): ${site.url}/resume`,
     `- Projects with write-ups: ${site.url}/projects`,
     `- Timeline of everything, newest first: ${site.url}/timeline`,
     `- Toolkit: ${site.url}/toolkit`,

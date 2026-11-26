@@ -26,7 +26,7 @@ export type Project = {
   /** Square icon for the list views. */
   mark?: string;
   /** Wordmark for product headings. */
-  logo?: { src: string; height: number };
+  logo?: { src: string; height: number; width: number };
   /** Longer write-up for product sections. */
   body?: ReactNode;
 };
@@ -41,7 +41,7 @@ export const products: Project[] = [
     source: "https://github.com/tysongreenan/uk-cookie-consent",
     title: "Cookie Banner",
     href: "https://cookie-banner.ca",
-    logo: { src: "/projects/cookie-banner.png", height: 22 },
+    logo: { src: "/projects/cookie-banner.png", height: 22, width: 103 },
     blurb:
       "Cookie consent banner builder for PIPEDA, Quebec Law 25, GDPR and CCPA. Design the banner, pick the local rules, copy one snippet.",
     stack: ["Next.js", "TypeScript", "Supabase", "Prisma", "Stripe", "AI SDK", "Sentry"],
@@ -61,7 +61,7 @@ export const products: Project[] = [
     href: "https://websitefeedback.ca",
     live: "https://websitefeedback.ca",
     date: "2026-01",
-    logo: { src: "/projects/website-feedback.svg", height: 20 },
+    logo: { src: "/projects/website-feedback.svg", height: 20, width: 139 },
     blurb:
       "Visual feedback on any live URL with no extension and no sign-up. AI agents can read and leave comments through its MCP server, and comments can become pull requests.",
     stack: ["Node.js", "Express", "Supabase", "Postgres", "Playwright", "Stripe", "Anthropic API", "MCP"],
@@ -81,7 +81,7 @@ export const products: Project[] = [
     live: "https://qr-code.ca",
     title: "QR Code",
     href: "https://qr-code.ca",
-    logo: { src: "/projects/qr-code.svg", height: 20 },
+    logo: { src: "/projects/qr-code.svg", height: 20, width: 89 },
     blurb:
       "Canadian QR code generator. Static codes are free and made in the browser; dynamic codes add scan tracking and an editable destination.",
     stack: ["Next.js", "TypeScript", "Prisma", "Supabase", "NextAuth", "Stripe"],

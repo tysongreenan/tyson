@@ -49,7 +49,8 @@ export default function About() {
       </dl>
 
       <p className="mt-14">
-        You can see what I have been building on the <A href="/projects">projects</A> page, or find me on{" "}
+        My full <A href="/resume">resume</A> is one tab over. You can see what I have been building on the{" "}
+        <A href="/projects">projects</A> page, or find me on{" "}
         <A href={`https://github.com/${site.github}`}>GitHub</A> and <A href={site.linkedin}>LinkedIn</A>. There is also a
         plain-text summary for AI agents at <A href="/llms.txt">/llms.txt</A>.
       </p>

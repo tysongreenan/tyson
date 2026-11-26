@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { A } from "@/components/a";
+import { CopyButton } from "@/components/copy-button";
 import { Tabs } from "@/components/tabs";
 import { site } from "@/content/site";
 import { mcpPath, toolkit, usageNote } from "@/content/toolkit";
@@ -9,7 +10,7 @@ export const metadata: Metadata = { title: "Toolkit" };
 export default function Toolkit() {
   return (
     <>
-      <h1 className="font-semibold mb-7 text-rurikon-600 text-balance">Toolkit</h1>
+      <h1 className="font-semibold mb-7 text-rurikon-600">Toolkit</h1>
       <p className="mt-7">
         My current stack, and the MCP servers, agent skills, command-line tools and coding agents I reach for when I
         build and ship code. The tools come from what my agents actually call, not a wish list.
@@ -24,13 +25,36 @@ export default function Toolkit() {
           Connect your agent to my toolkit&apos;s MCP server. It lists everything here and gives install steps from each
           tool&apos;s own docs, and your agent asks you before running anything.
         </p>
-        <p className="mt-4 text-[0.85em] text-rurikon-400">Claude Code</p>
-        <pre className="mt-1 overflow-x-auto rounded-md bg-rurikon-50 px-3 py-2 text-[0.8em] leading-6">
-          <code>{`claude mcp add --transport http tyson-toolkit ${site.url}${mcpPath}`}</code>
+        <div className="mt-4 flex items-center justify-between gap-3">
+          <p id="mcp-claude-label" className="text-[0.85em] text-rurikon-400">
+            Claude Code
+          </p>
+          <CopyButton target="mcp-claude" label="Copy command" />
+        </div>
+        {/* Scrollable, so keyboard users can focus it to scroll (html guide). */}
+        <pre
+          tabIndex={0}
+          role="region"
+          aria-labelledby="mcp-claude-label"
+          className="mt-1 overflow-x-auto rounded-md bg-rurikon-50 px-3 py-2 text-[0.8em] leading-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dotted focus-visible:outline-rurikon-400"
+        >
+          <code id="mcp-claude">{`claude mcp add --transport http tyson-toolkit ${site.url}${mcpPath}`}</code>
         </pre>
-        <p className="mt-4 text-[0.85em] text-rurikon-400">Cursor and other clients (mcp.json)</p>
-        <pre className="mt-1 overflow-x-auto rounded-md bg-rurikon-50 px-3 py-2 text-[0.8em] leading-6">
-          <code>{JSON.stringify({ mcpServers: { "tyson-toolkit": { url: `${site.url}${mcpPath}` } } }, null, 2)}</code>
+        <div className="mt-4 flex items-center justify-between gap-3">
+          <p id="mcp-json-label" className="text-[0.85em] text-rurikon-400">
+            Cursor and other clients (mcp.json)
+          </p>
+          <CopyButton target="mcp-json" label="Copy config" />
+        </div>
+        <pre
+          tabIndex={0}
+          role="region"
+          aria-labelledby="mcp-json-label"
+          className="mt-1 overflow-x-auto rounded-md bg-rurikon-50 px-3 py-2 text-[0.8em] leading-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dotted focus-visible:outline-rurikon-400"
+        >
+          <code id="mcp-json">
+            {JSON.stringify({ mcpServers: { "tyson-toolkit": { url: `${site.url}${mcpPath}` } } }, null, 2)}
+          </code>
         </pre>
         <p className="mt-4">
           Then ask your agent to &ldquo;set up Tyson&apos;s toolkit in this project&rdquo;, or use the server&apos;s{" "}
@@ -56,7 +80,7 @@ export default function Toolkit() {
                           must have
                         </span>
                       ) : null}
-                      <span className="ml-3 text-[0.8em] font-normal text-rurikon-300">
+                      <span className="ml-3 text-[0.8em] font-normal text-rurikon-400">
                         {t.project ? (
                           <A href={`/projects#${t.project}`}>my project</A>
                         ) : t.by === "Me" ? (

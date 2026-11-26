@@ -21,10 +21,10 @@ export default async function Timeline() {
           <ul className="space-y-2">
             {entries.map((e) => (
               <li key={e.key} className="flex gap-4 items-baseline">
-                <span className="w-8 shrink-0 text-rurikon-300 tabular-nums text-[0.85em]">{monthName(e.date)}</span>
+                <span className="w-8 shrink-0 text-rurikon-400 tabular-nums text-[0.85em]">{monthName(e.date)}</span>
                 <span>
                   <A href={e.featuredSlug ? `/projects#${e.featuredSlug}` : e.href}>{e.title}</A>
-                  <span className="ml-3 text-[0.8em] text-rurikon-300">
+                  <span className="ml-3 text-[0.8em] text-rurikon-400">
                     {e.kind}
                     {e.status ? `, ${e.status.toLowerCase()}` : ""}
                   </span>

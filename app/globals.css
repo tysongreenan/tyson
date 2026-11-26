@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-@custom-variant mobile (@media (min-width: 480px));
+/* rem, not px, so the layout switch follows the user's text size (respect-os-text-scale). */
+@custom-variant mobile (@media (min-width: 30rem));
 
 @theme {
   --color-rurikon-50: #ebedef;
@@ -17,11 +18,33 @@
 }
 
 :root {
+  color-scheme: light dark;
   --background: #fcfcfc;
 }
 
-html {
-  color-scheme: only light;
+/* Dark mode follows the OS setting. Tailwind utilities read these variables, so no per-element changes.
+   Text tokens (400 and up) keep at least 7:1 contrast on the background; 300 and below are decoration only. */
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --background: #131518;
+    --color-rurikon-50: #1d2024;
+    --color-rurikon-100: #272b30;
+    --color-rurikon-200: #3d434b;
+    --color-rurikon-300: #5d6570;
+    --color-rurikon-400: #98a1ad;
+    --color-rurikon-500: #bfc5cd;
+    --color-rurikon-600: #d5d9de;
+    --color-rurikon-700: #e4e7ea;
+    --color-rurikon-800: #f1f3f5;
+    --color-rurikon-border: #3d434bb3;
+  }
+  /* Product wordmarks are drawn for a light background. */
+  .wordmark {
+    background: #fcfcfc;
+    border-radius: 0.25rem;
+    padding: 0.125rem 0.375rem;
+    box-sizing: content-box;
+  }
 }
 
 body {
@@ -36,6 +59,18 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Balanced headings and no orphaned last words in body text (improve-text-layout-and-legibility). */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+
 main {
   hanging-punctuation: first allow-end last;
 }
@@ -44,7 +79,84 @@ main {
   @apply break-words underline underline-offset-2 decoration-rurikon-300 hover:decoration-rurikon-600 transition-colors;
   text-decoration-thickness: from-font;
 }
+/* Press feedback, replacing the removed tap highlight (natural-interactions). */
+.link:active {
+  text-decoration-color: var(--color-rurikon-600);
+}
 
 .content-fade-out {
   background: linear-gradient(to bottom, var(--background), transparent);
+}
+
+/* A row of tabs that scrolls on narrow screens: fade only the edges that have more tabs beyond them
+   (scrollability-affordance-hints). Without scroll-driven animations there is simply no fade. */
+@property --fade-start {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --fade-end {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+.tab-scroller {
+  --fade-size: 2rem;
+  scroll-padding-inline: var(--fade-size);
+  scrollbar-width: none;
+  mask:
+    linear-gradient(black, black) no-clip subtract,
+    linear-gradient(to right, black, transparent) 0 0 / var(--fade-start) 100% no-repeat no-clip,
+    linear-gradient(to right, transparent, black) 100% 0 / var(--fade-end) 100% no-repeat no-clip;
+  animation:
+    reveal-fade-start linear both,
+    hide-fade-end linear both;
+  animation-timeline: scroll(self inline);
+  animation-range:
+    0 var(--fade-size),
+    calc(100% - var(--fade-size)) 100%;
+}
+@keyframes reveal-fade-start {
+  to {
+    --fade-start: var(--fade-size);
+  }
+}
+@keyframes hide-fade-end {
+  from {
+    --fade-end: var(--fade-size);
+  }
+}
+
+/* Page crossfade between routes, off for people who ask for less motion (same-document-transitions). */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* Print and "Save as PDF" (mainly the resume): drop the site chrome, keep the content full width. */
+@media print {
+  @page {
+    margin: 1.5cm;
+  }
+  :root {
+    color-scheme: light;
+  }
+  body {
+    background: white;
+    padding: 0;
+  }
+  nav,
+  .content-fade-out,
+  main > div[class*="bg-rurikon-border"] {
+    display: none;
+  }
+  main {
+    max-width: none;
+  }
+  article {
+    padding: 0;
+  }
 }
