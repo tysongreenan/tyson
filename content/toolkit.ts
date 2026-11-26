@@ -66,6 +66,7 @@ export const toolkit: ToolGroup[] = [
         body: "An agent skill that has a second model, GPT Sol, review a change in rounds until both agents agree. It keeps a ledger of findings and a three-round budget, so it catches real bugs without scope creep.",
       },
       {
+        mustHave: true,
         slug: "graphify",
         title: "Graphify",
         href: "https://github.com/Graphify-Labs/graphify",
