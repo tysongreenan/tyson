@@ -26,20 +26,18 @@ export type Install = {
   note?: string;
 };
 
+// Clone into a fresh private temp folder each time, never a fixed shared path another user could plant.
+const tstackCopy = (skill: string, dest: string) =>
+  `d=$(mktemp -d) && git clone --depth 1 https://github.com/t3dotgg/tstack "$d" && mkdir -p ${dest} && cp -R "$d/skills/${skill}" ${dest}/ && rm -rf "$d"`;
+
 const tstack = (skill: string): InstallOption[] => [
   {
     for: "Claude Code (this project)",
-    steps: [
-      { run: "[ -d /tmp/tstack ] || git clone https://github.com/t3dotgg/tstack /tmp/tstack", where: "terminal" },
-      { run: `mkdir -p .claude/skills && cp -R /tmp/tstack/skills/${skill} .claude/skills/`, where: "terminal", scope: "project" },
-    ],
+    steps: [{ run: tstackCopy(skill, ".claude/skills"), where: "terminal", scope: "project" }],
   },
   {
     for: "Codex",
-    steps: [
-      { run: "[ -d /tmp/tstack ] || git clone https://github.com/t3dotgg/tstack /tmp/tstack", where: "terminal" },
-      { run: `mkdir -p ~/.codex/skills && cp -R /tmp/tstack/skills/${skill} ~/.codex/skills/`, where: "terminal", scope: "user" },
-    ],
+    steps: [{ run: tstackCopy(skill, "~/.codex/skills"), where: "terminal", scope: "user" }],
   },
 ];
 
