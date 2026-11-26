@@ -7,6 +7,10 @@ export type Tool = {
   body: string;
   /** Number of T3 Code threads where an agent used it (see `usageNote`). */
   threads?: number;
+  /** Shown first in its tab with a "must have" label. */
+  mustHave?: boolean;
+  /** Anchor on /projects for tools that are my own projects. */
+  project?: string;
 };
 
 export type ToolGroup = { slug: string; label: string; intro?: string; tools: Tool[] };
@@ -18,10 +22,11 @@ export const usageNote =
 /** MCP servers, agent skills and toolkits I use. The first group is the default tab. */
 export const toolkit: ToolGroup[] = [
   {
-    slug: "must-have",
-    label: "Must have",
+    slug: "skills",
+    label: "Skills",
     tools: [
       {
+        mustHave: true,
         slug: "modern-web-guidance",
         title: "Modern Web Guidance",
         href: "https://developer.chrome.com/docs/modern-web-guidance",
@@ -30,7 +35,9 @@ export const toolkit: ToolGroup[] = [
         body: "Skills from the Chrome team that put web platform best practices straight into a coding agent. My agents search it before they write any HTML, CSS or browser JavaScript, so they reach for modern platform features instead of old patterns or extra libraries.",
       },
       {
+        mustHave: true,
         slug: "panel",
+        project: "panel",
         title: "Panel",
         href: "https://tastetest-three.vercel.app/",
         by: "Me",
@@ -38,6 +45,7 @@ export const toolkit: ToolGroup[] = [
         body: "A design-review team that lives in your repo. npx @tysongreenan/panel init installs skills for Claude Code and Cursor; then you ask an agent to run a panel. Buyer personas walk the product and leave a scored report with file-level fixes, so it doesn't ship looking like AI slop.",
       },
       {
+        mustHave: true,
         slug: "full-send",
         title: "Full Send",
         href: "https://github.com/t3dotgg/tstack/tree/main/skills/full-send",
@@ -46,12 +54,69 @@ export const toolkit: ToolGroup[] = [
         body: "An agent skill for when I'm not watching. Say \"full send\" and the agent takes the change all the way to a merged pull request: it proves the change works, gets it reviewed, files the PR, fixes CI and review comments, and merges.",
       },
       {
+        mustHave: true,
         slug: "sol-loop",
         title: "Sol Loop",
         href: "https://github.com/t3dotgg/tstack/tree/main/skills/sol-loop",
         by: "Theo Browne (tstack)",
         threads: 79,
         body: "An agent skill that has a second model, GPT Sol, review a change in rounds until both agents agree. It keeps a ledger of findings and a three-round budget, so it catches real bugs without scope creep.",
+      },
+      {
+        slug: "graphify",
+        title: "Graphify",
+        href: "https://github.com/Graphify-Labs/graphify",
+        by: "Graphify Labs",
+        threads: 246,
+        body: "Turns a codebase, its docs, SQL schemas, configs and PDFs into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex and Gemini CLI. Parsing is local and deterministic, every edge is explained, and there is no vector store.",
+      },
+      {
+        slug: "file-pr",
+        title: "File PR",
+        href: "https://github.com/t3dotgg/tstack/tree/main/skills/file-pr",
+        by: "Theo Browne (tstack)",
+        threads: 68,
+        body: "Files a short, clear pull request. Full Send calls it after the change is proven and reviewed.",
+      },
+      {
+        slug: "babysit-pr",
+        title: "Babysit PR",
+        href: "https://github.com/t3dotgg/tstack/tree/main/skills/babysit-pr",
+        by: "Theo Browne (tstack)",
+        threads: 40,
+        body: "Watches a pull request through CI and review bots, fixes real findings and failures, and keeps going until it is ready to merge.",
+      },
+      {
+        slug: "frontend-design",
+        title: "Frontend Design",
+        href: "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design",
+        by: "Anthropic",
+        threads: 13,
+        body: "Pushes agents toward a deliberate visual direction and away from templated defaults when building new UI.",
+      },
+      {
+        slug: "impeccable",
+        title: "Impeccable",
+        href: "https://impeccable.style",
+        by: "Impeccable",
+        threads: 8,
+        body: "A design vocabulary for agents: build, critique, audit and polish interfaces against a written design system.",
+      },
+      {
+        slug: "ui-ux-pro-max",
+        title: "UI UX Pro Max",
+        href: "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+        by: "Next Level Builder",
+        threads: 7,
+        body: "Reference data for UI work: styles, colour palettes, font pairings and UX rules across common stacks.",
+      },
+      {
+        slug: "jury",
+        title: "Jury",
+        href: "https://github.com/juliobsz/skills",
+        by: "juliobsz",
+        threads: 4,
+        body: "Scores a website the way an Awwwards jury would, from screenshots and measurements. Panel uses it to grade a build before and after fixes.",
       },
     ],
   },
@@ -163,15 +228,8 @@ export const toolkit: ToolGroup[] = [
         body: "Browser control for agents: navigate, click, run scripts and take screenshots to check a page really works.",
       },
       {
-        slug: "clickup-mcp",
-        title: "ClickUp MCP",
-        href: "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server",
-        by: "ClickUp",
-        threads: 6,
-        body: "Reads and searches ClickUp tasks, so agents work from the real ticket.",
-      },
-      {
         slug: "website-feedback-mcp",
+        project: "website-feedback",
         title: "Website Feedback MCP",
         href: "https://websitefeedback.ca",
         by: "Me",
@@ -193,68 +251,6 @@ export const toolkit: ToolGroup[] = [
         by: "Webflow",
         threads: 3,
         body: "Edits Webflow sites, pages, CMS items and elements from an agent, for client sites that still live in Webflow.",
-      },
-    ],
-  },
-  {
-    slug: "skills",
-    label: "Skills",
-    tools: [
-      {
-        slug: "graphify",
-        title: "Graphify",
-        href: "https://github.com/Graphify-Labs/graphify",
-        by: "Graphify Labs",
-        threads: 246,
-        body: "Turns a codebase, its docs, SQL schemas, configs and PDFs into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex and Gemini CLI. Parsing is local and deterministic, every edge is explained, and there is no vector store.",
-      },
-      {
-        slug: "file-pr",
-        title: "File PR",
-        href: "https://github.com/t3dotgg/tstack/tree/main/skills/file-pr",
-        by: "Theo Browne (tstack)",
-        threads: 68,
-        body: "Files a short, clear pull request. Full Send calls it after the change is proven and reviewed.",
-      },
-      {
-        slug: "babysit-pr",
-        title: "Babysit PR",
-        href: "https://github.com/t3dotgg/tstack/tree/main/skills/babysit-pr",
-        by: "Theo Browne (tstack)",
-        threads: 40,
-        body: "Watches a pull request through CI and review bots, fixes real findings and failures, and keeps going until it is ready to merge.",
-      },
-      {
-        slug: "frontend-design",
-        title: "Frontend Design",
-        href: "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design",
-        by: "Anthropic",
-        threads: 13,
-        body: "Pushes agents toward a deliberate visual direction and away from templated defaults when building new UI.",
-      },
-      {
-        slug: "impeccable",
-        title: "Impeccable",
-        href: "https://impeccable.style",
-        by: "Impeccable",
-        threads: 8,
-        body: "A design vocabulary for agents: build, critique, audit and polish interfaces against a written design system.",
-      },
-      {
-        slug: "ui-ux-pro-max",
-        title: "UI UX Pro Max",
-        href: "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
-        by: "Next Level Builder",
-        threads: 7,
-        body: "Reference data for UI work: styles, colour palettes, font pairings and UX rules across common stacks.",
-      },
-      {
-        slug: "jury",
-        title: "Jury",
-        href: "https://github.com/juliobsz/skills",
-        by: "juliobsz",
-        threads: 4,
-        body: "Scores a website the way an Awwwards jury would, from screenshots and measurements. Panel uses it to grade a build before and after fixes.",
       },
     ],
   },

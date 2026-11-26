@@ -60,7 +60,7 @@ export async function GET() {
       ...(g.intro ? [g.intro] : []),
       ...g.tools.map(
         (t) =>
-          `- ${t.title} (${t.by === "Me" ? "made by me" : `by ${t.by}`}${t.threads ? `; used in ${t.threads} threads` : ""}; ${t.href}): ${t.body}`,
+          `- ${t.title}${t.mustHave ? " [must have]" : ""} (${t.project ? `my project, ${site.url}/projects#${t.project}` : t.by === "Me" ? "made by me" : `by ${t.by}`}${t.threads ? `; used in ${t.threads} threads` : ""}; ${t.href}): ${t.body}`,
       ),
     ]),
     "",

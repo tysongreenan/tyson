@@ -28,8 +28,19 @@ export default function Toolkit() {
                   <li key={t.slug} id={t.slug} className="scroll-mt-6 sm:scroll-mt-14">
                     <h2 className="font-semibold text-rurikon-600">
                       <A href={t.href}>{t.title}</A>
+                      {t.mustHave ? (
+                        <span className="ml-3 rounded-sm border border-rurikon-border px-1.5 py-px align-middle text-[0.7em] font-normal text-rurikon-500">
+                          must have
+                        </span>
+                      ) : null}
                       <span className="ml-3 text-[0.8em] font-normal text-rurikon-300">
-                        {t.by === "Me" ? "made by me" : `by ${t.by}`}
+                        {t.project ? (
+                          <A href={`/projects#${t.project}`}>my project</A>
+                        ) : t.by === "Me" ? (
+                          "made by me"
+                        ) : (
+                          `by ${t.by}`
+                        )}
                         {t.threads ? ` · ${t.threads.toLocaleString("en-US")} threads` : ""}
                       </span>
                     </h2>
