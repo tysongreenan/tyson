@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { A } from "@/components/a";
 import { PrintButton } from "@/components/print-button";
+import { current, earlier, education, previous } from "@/content/experience";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -103,6 +104,7 @@ const jsonLd = {
   worksFor: { "@type": "Organization", name: "Sway Advertising", url: "https://sway.ca" },
   address: { "@type": "PostalAddress", addressRegion: "ON", addressCountry: "CA" },
   sameAs: [`https://github.com/${site.github}`, site.linkedin],
+  alumniOf: { "@type": "CollegeOrUniversity", name: "Fanshawe College" },
   knowsAbout: ["Next.js", "TypeScript", "Convex", "Cloudflare Workers", "AI agents", "MCP servers", "SEO", "AI search visibility"],
 };
 
@@ -127,7 +129,7 @@ export default function Resume() {
 
       <Section id="summary" title="Summary">
         <p className="mt-4">
-          Full-stack developer and digital marketer who ships production software end to end, from database to SEO. At
+          Full-stack developer and digital marketer, in marketing since 2019, who ships production software end to end, from database to SEO. At
           Sway Advertising I built the agency&apos;s internal AI platform and its own agent harness (3,800+ commits since
           May 2026), a client website editor and a multi-tenant CMS, alongside client websites and SEO. On the side I
           build and run five products; Signoff is in production with its first client. I work AI-first: 2,300+
@@ -138,12 +140,12 @@ export default function Resume() {
 
       <Section id="experience" title="Experience">
         <p className="mt-4">
-          <span className="font-semibold text-rurikon-600">Developer and Digital Marketer</span>,{" "}
-          <A href="https://sway.ca">Sway Advertising</A>, Guelph, ON · Present
+          <span className="font-semibold text-rurikon-600">{current.title}</span>,{" "}
+          <A href="https://sway.ca">{current.company}</A> · {current.start} to present · {current.location}
         </p>
         <p className="mt-1 text-rurikon-400">
-          Creative and digital marketing agency. I build the agency&apos;s internal software, its client websites, and
-          run SEO for clients.
+          Creative and digital marketing agency. I lead SEO and digital strategy for clients, and build the
+          agency&apos;s internal software and client websites.
         </p>
         <ul className="mt-4 list-disc pl-5 marker:text-rurikon-200 space-y-3">
           <li>
@@ -190,6 +192,22 @@ export default function Resume() {
             client reports automated with Playwright against SE Ranking and Google Search Console.
           </li>
         </ul>
+
+        <ul className="mt-8 space-y-4">
+          {previous.map((r) => (
+            <li key={`${r.company}-${r.title}`} className="break-inside-avoid">
+              <p>
+                <span className="font-semibold text-rurikon-600">{r.title}</span>, {r.company}
+              </p>
+              <p className="text-[0.85em] text-rurikon-400">
+                {r.start} to {r.end} · {r.location}
+                {r.type ? ` · ${r.type}` : ""}
+              </p>
+              {r.summary ? <p className="mt-1">{r.summary}</p> : null}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 text-rurikon-400">Earlier: {earlier}</p>
       </Section>
 
       <Section id="products" title="Products">
@@ -247,6 +265,17 @@ export default function Resume() {
             product, and a <A href="/toolkit#connect">public MCP server</A> that installs my toolkit into other
             people&apos;s projects.
           </li>
+        </ul>
+      </Section>
+
+      <Section id="education" title="Education">
+        <ul className="mt-4 space-y-2">
+          {education.map((e) => (
+            <li key={e.school}>
+              <span className="font-semibold text-rurikon-600">{e.credential}</span>, {e.school}
+              <span className="block text-[0.85em] text-rurikon-400">{e.years}</span>
+            </li>
+          ))}
         </ul>
       </Section>
     </>
