@@ -97,6 +97,8 @@ export const products: Project[] = [
     slug: "signoff",
     date: "2026-10",
     title: "Signoff",
+    href: "https://signoff.greenantyson.workers.dev",
+    live: "https://signoff.greenantyson.workers.dev",
     blurb:
       "Email signatures for a whole company, managed in one place. Design one signature; Signoff fills in each person's details from Microsoft 365 or Google Workspace and puts it on every email they send in Outlook or Gmail. In production with its first client.",
     stack: [
