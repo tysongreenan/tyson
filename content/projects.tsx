@@ -43,14 +43,17 @@ export const products: Project[] = [
     href: "https://cookie-banner.ca",
     logo: { src: "/projects/cookie-banner.png", height: 22, width: 103 },
     blurb:
-      "Cookie consent banner builder for PIPEDA, Quebec Law 25, GDPR and CCPA. Design the banner, pick the local rules, copy one snippet.",
+      "Cookie consent banner builder for PIPEDA, Quebec Law 25, GDPR and CCPA. Consent Mode defaults go out before any tag, Global Privacy Control is respected, and each banner is cached at the edge per region with purge on save.",
     stack: ["Next.js", "TypeScript", "Supabase", "Prisma", "Stripe", "AI SDK", "Sentry"],
     body: (
       <>
         A cookie consent banner builder for PIPEDA, Quebec Law 25, GDPR and CCPA. Design the banner, pick the local
         rules, copy the snippet and ship it. This is the product I have spent the most time on: it started in 2025 as an
         open source GDPR tool and now runs as a product at cookie-banner.ca (
-        <A href="https://github.com/tysongreenan/uk-cookie-consent">source</A>).
+        <A href="https://github.com/tysongreenan/uk-cookie-consent">source</A>). Consent Mode defaults go out before any
+        tag loads, Global Privacy Control is read from both the request header and the browser, and each banner is cached
+        at the edge per country, region and privacy signal, with a purge on every save. Its cookie scanner is rules-based
+        and leans toward flagging, because a missed tracker is the expensive mistake.
       </>
     ),
   },
@@ -69,8 +72,10 @@ export const products: Project[] = [
       <>
         A visual website feedback tool. Reviewers leave comments directly on any live URL with no extensions and no
         sign-up, so design teams and agencies can collect feedback and run launch checklists in one place. It has an MCP
-        server, so AI coding agents can read open comments, leave their own, and resolve them, and a GitHub workflow
-        that turns comments into pull requests.
+        server, so AI coding agents can read open comments, leave their own, and resolve them. In beta, an agent turns a
+        comment pinned on a live page into a pull request: plain code ranks the likely source file and line, a tool
+        budget keeps the model from wandering the repo, commits are refused if a file changed since the model read it,
+        and a person approves the merge.
       </>
     ),
   },
@@ -118,8 +123,10 @@ export const products: Project[] = [
       <>
         Email signatures for a whole company, managed in one place. You design one signature, and Signoff fills in each
         person&apos;s name, title and details from Microsoft 365 or Google Workspace, then puts it on every email they
-        send in Outlook or Gmail. Directory webhooks keep signatures current when people change roles, and an Outlook
-        add-in applies them in the client. It runs on Cloudflare Workers and is in production with its first client.
+        send in Outlook or Gmail. Microsoft Graph webhooks keep signatures current when people change roles, and an
+        Outlook add-in applies them in the client. It runs on Cloudflare Workers and D1, with version-guarded atomic
+        writes, an admin-consent flow that proves the tenant, and template import that never sends staff data to a
+        model. In production with its first client.
       </>
     ),
   },
@@ -157,7 +164,7 @@ export const swayTools: Project[] = [
     href: "https://app.sway.ca",
     mark: "/projects/sway.svg",
     blurb:
-      "The agency's operating system: tasks, meetings, wiki, social and SEO work, with an AI agent that knows each client. Includes scheduled routines, approvals and a desktop app.",
+      "The management system the whole Sway team runs on: social scheduling, client email marketing, an SEO and reporting centre, tasks, docs and meetings. Its own agent harness decides approvals from what the AI has read, picks the cheapest model that passed its test, and keeps agent runs crash-safe.",
     stack: ["Next.js", "TypeScript", "Convex", "AI SDK", "Electron", "Tiptap", "TanStack", "PostHog", "Railway"],
   },
   {
@@ -168,7 +175,7 @@ export const swayTools: Project[] = [
     href: "https://studio.sway.ca",
     mark: "/projects/sway.svg",
     blurb:
-      "Client handoff for AI-built websites. One login where clients edit their own coded site in place, ask AI for changes, preview and publish, without touching GitHub.",
+      "Client handoff for AI-built websites, in use now. Clients edit their own coded site in place, ask AI for changes, preview and publish without touching GitHub. The coding agents are sandboxed, and every AI turn can be undone.",
     stack: ["Node.js", "Express", "Postgres", "GitHub API", "Vercel", "Railway", "Electron"],
   },
   {
@@ -204,7 +211,7 @@ export const clients: Project[] = [
     href: "https://novagolfmedia.com",
     live: "https://novagolfmedia.com",
     mark: "/projects/nova-golf.svg",
-    blurb: "Golf media site with video, built for Sway. It reads published content from the Nova Golf CMS.",
+    blurb: "Golf media site with video and its own CMS, built for Sway. AI agents can draft content but never publish, enforced in code and tested.",
     stack: ["Next.js", "Payload CMS", "Clerk", "Mux", "GSAP"],
   },
   {
@@ -270,7 +277,7 @@ export const clients: Project[] = [
     title: "Trevalli Homes",
     href: "https://trevalli-homes.vercel.app",
     mark: "/projects/trevalli.svg",
-    status: "In progress",
+    status: "Launching soon",
     blurb: "Marketing site for a boutique home builder in Southern Ontario, for Sway.",
     stack: ["Next.js", "shadcn/ui", "Tailwind CSS", "MapLibre"],
   },
@@ -281,7 +288,7 @@ export const clients: Project[] = [
     title: "Miller Waste Systems",
     href: "https://miller-waste-systems.vercel.app",
     mark: "/projects/miller-waste.png",
-    status: "Not launched",
+    status: "Launching soon",
     blurb:
       "Waste and recycling company. Next.js rebuild at Sway. Their live site is still WordPress, so this links to my build.",
     stack: ["Next.js", "React", "Markdown content", "SendGrid"],
@@ -308,9 +315,9 @@ export const apps: Project[] = [
     title: "Evergreen OS",
     href: "https://evergreen-os-henna.vercel.app",
     mark: "/projects/evergreen.png",
-    status: "Prototype",
+    status: "Launching soon",
     blurb:
-      "Project management for a construction company: timesheets, safety records, daily reports, estimates and approvals around one project record, with roles and a phone layout.",
+      "Project management for a construction company on Convex: timesheets to payroll export, safety and field records, approvals. Offline saves replay safely, every write is re-checked on the server by role, and AI agents get draft-only access.",
     stack: ["Next.js", "TypeScript", "Convex", "AWS S3"],
   },
   {
@@ -320,7 +327,7 @@ export const apps: Project[] = [
     title: "CareManager",
     href: "https://jenuine-care-saas.vercel.app",
     mark: "/projects/jenuine-care.png",
-    status: "In progress",
+    status: "Launching soon",
     blurb:
       "Home healthcare platform built for Jenuine Care. Admins, coordinators and nurses manage patients, assignments, scheduling, timesheets and billing.",
     stack: ["Next.js", "TypeScript", "Postgres", "Prisma", "Supabase", "NextAuth", "Stripe"],

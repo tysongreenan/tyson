@@ -5,7 +5,7 @@ export const site = {
   location: "Ontario, Canada",
   url: "https://tysongreenan.vercel.app",
   tagline:
-    "Developer and digital marketer at Sway Advertising. I build Sway's internal AI platform, client websites, and side products like Cookie Banner and Website Feedback.",
+    "Full-stack developer who builds with AI coding agents every day. I built Sway Advertising's internal AI platform and its agent harness, client websites, and my own products like Signoff and Cookie Banner.",
 };
 
 /** One line on what I build new projects with today. Details live in the Stack tab on /toolkit. */
