@@ -1,4 +1,5 @@
 import { A } from "@/components/a";
+import { TokenCounter } from "@/components/token-counter";
 import { currentStack, site, skills } from "@/content/site";
 
 export default function About() {
@@ -32,6 +33,8 @@ export default function About() {
       <p className="mt-7">
         Outside of work I am usually on another side project, or out walking with my dog Luna.
       </p>
+
+      <TokenCounter className="mt-10" />
 
       <h2 id="skills" className="font-semibold mt-14 mb-7 text-rurikon-600 scroll-mt-6 sm:scroll-mt-14">
         Skills

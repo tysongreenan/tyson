@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { A } from "@/components/a";
 import { CopyButton } from "@/components/copy-button";
+import { TokenCounter } from "@/components/token-counter";
 import { Tabs } from "@/components/tabs";
 import { site } from "@/content/site";
 import { mcpPath, toolkit, usageNote } from "@/content/toolkit";
@@ -16,6 +17,7 @@ export default function Toolkit() {
         build and ship code. The tools come from what my agents actually call, not a wish list.
       </p>
       <p className="mt-3 text-[0.85em] text-rurikon-400">{usageNote}</p>
+      <TokenCounter className="mt-6" />
 
       <section aria-labelledby="connect" className="mt-10">
         <h2 id="connect" className="font-semibold text-rurikon-600 scroll-mt-6 sm:scroll-mt-14">

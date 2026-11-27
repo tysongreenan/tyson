@@ -1,0 +1,38 @@
+{
+  "asOf": "2026-11-27",
+  "since": "2026-09-23",
+  "total": 40066994722,
+  "cacheRead": 39055359672,
+  "output": 117132706,
+  "messages": 152278,
+  "sessions": 4753,
+  "providers": {
+    "Claude Code": {
+      "input": 215044985,
+      "cacheRead": 38608196792,
+      "cacheWrite": 667290827,
+      "output": 114669360,
+      "messages": 148621,
+      "sessions": 4369,
+      "total": 39605201964
+    },
+    "Grok": {
+      "input": 142182,
+      "cacheRead": 225539328,
+      "cacheWrite": 0,
+      "output": 1522980,
+      "messages": 79,
+      "sessions": 9,
+      "total": 227204490
+    },
+    "Codex": {
+      "input": 12024350,
+      "cacheRead": 221623552,
+      "cacheWrite": 0,
+      "output": 940366,
+      "messages": 3578,
+      "sessions": 375,
+      "total": 234588268
+    }
+  }
+}
