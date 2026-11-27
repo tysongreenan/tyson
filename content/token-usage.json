@@ -1,20 +1,20 @@
 {
   "asOf": "2026-11-26",
   "since": "2026-09-23",
-  "total": 40938159514,
-  "cacheRead": 39975114365,
-  "output": 112821646,
-  "messages": 155400,
+  "total": 40939966408,
+  "cacheRead": 39976909258,
+  "output": 112824380,
+  "messages": 155405,
   "sessions": 4803,
   "providers": {
     "Claude Code": {
-      "input": 153313260,
-      "cacheRead": 39527951485,
-      "cacheWrite": 678958864,
-      "output": 110358300,
-      "messages": 151735,
+      "input": 153313272,
+      "cacheRead": 39529746378,
+      "cacheWrite": 678968119,
+      "output": 110361034,
+      "messages": 151740,
       "sessions": 4419,
-      "total": 40470581909
+      "total": 40472388803
     },
     "Codex": {
       "input": 17809197,
