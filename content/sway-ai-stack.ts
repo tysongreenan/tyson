@@ -121,7 +121,7 @@ export const services: Group[] = [
   {
     title: "SEO, reviews and research",
     items: [
-      { name: "DataForSEO", href: "https://dataforseo.com", note: "rank tracking and local grids" },
+      { name: "DataForSEO", href: "https://dataforseo.com", note: "rank tracking, local map grids and AI search visibility: 73 trackers across 14 clients, 8,000+ calls in the last four days, held under monthly spend caps set in code" },
       { name: "SE Ranking", href: "https://seranking.com", note: "rankings and audits" },
       { name: "Google Search Console", href: "https://developers.google.com/webmaster-tools", note: "search performance" },
       { name: "Google Analytics 4", href: "https://developers.google.com/analytics", note: "traffic" },
@@ -133,8 +133,9 @@ export const services: Group[] = [
   {
     title: "Social and email",
     items: [
-      { name: "Outstand", note: "social post scheduling and publishing" },
-      { name: "Meta, LinkedIn and YouTube", note: "account connections are set up; Google Business Profile is the active channel today" },
+      { name: "Social media API connector (built in-house)", note: "one publishing layer with an adapter per network, idempotent delivery jobs, retries and per-network kill switches" },
+      { name: "Meta Graph API and YouTube Data API", note: "direct publishing; posts have gone out to Facebook, Instagram and YouTube" },
+      { name: "Outstand", href: "https://www.outstand.so", note: "a second connection route for social accounts; 16 accounts connected through it" },
       { name: "Amazon SES", href: "https://aws.amazon.com/ses/", note: "client newsletter delivery (the default)" },
       { name: "SendGrid", href: "https://sendgrid.com", note: "set up as a per-client alternative for newsletters" },
       { name: "Resend", href: "https://resend.com", note: "sign-in and notification email" },
@@ -156,7 +157,7 @@ export const services: Group[] = [
       { name: "Convex Cloud", href: "https://www.convex.dev", note: "backend hosting" },
       { name: "Railway", href: "https://railway.com", note: "web app hosting" },
       { name: "Cloudflare R2 and Workers", href: "https://developers.cloudflare.com/r2/", note: "file storage and edge workers" },
-      { name: "PostHog", href: "https://posthog.com", note: "connected to the agent through its MCP server" },
+      { name: "PostHog", href: "https://posthog.com", note: "product analytics, session replay and error tracking in the web app, with typed inputs and share links masked; about 132,000 production events since Oct 7. The agent also reads it through PostHog's MCP server." },
     ],
   },
 ];

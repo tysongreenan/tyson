@@ -31,7 +31,7 @@ const harness = [
 ];
 
 const swayAi: [string, string][] = [
-  ["Social media manager", "content calendar, posting queue, client approvals, best-time suggestions, analytics and an inbound messages inbox, publishing through the Outstand scheduling API."],
+  ["Social media manager", "content calendar, posting queue, client approvals, best-time suggestions, analytics and an inbound messages inbox, publishing through its own social API connector to Facebook, Instagram, YouTube and Google Business Profile, with Outstand as a second connection route."],
   ["Email marketing, our own Mailchimp", "client newsletters with lists, segments, signup forms, templates, A/B and multivariate tests, automations and scheduled sends, delivered through Amazon SES or SendGrid."],
   ["SEO platform and reporting centre", "rank and local grid tracking (DataForSEO), SE Ranking, Search Console, GA4 and Google Business Profile data, AI search visibility tracking, and shareable monthly client reports."],
   ["Task management", "subtasks, recurring tasks, followers, time tracking and timesheets, a daily planner, and a ClickUp import that brought in 6,236 existing tasks."],

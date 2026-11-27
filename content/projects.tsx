@@ -168,7 +168,7 @@ export const swayTools: Project[] = [
     mark: "/projects/sway.svg",
     blurb:
       "The management system the whole Sway team runs on: social scheduling, client email marketing, an SEO and reporting centre, tasks, docs and meetings. Its own agent harness decides approvals from what the AI has read, picks the cheapest model that passed its test, and keeps agent runs crash-safe.",
-    stack: ["Next.js", "TypeScript", "Convex", "AI SDK", "Electron", "Tiptap", "TanStack", "PostHog", "Railway"],
+    stack: ["Next.js", "TypeScript", "Convex", "OpenRouter", "Electron", "Tiptap", "TanStack", "DataForSEO", "PostHog", "Railway"],
   },
   {
     repo: null,
