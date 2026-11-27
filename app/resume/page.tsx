@@ -32,7 +32,7 @@ const harness = [
 
 const swayAi: [string, string][] = [
   ["Social media manager", "content calendar, posting queue, client approvals, best-time suggestions, analytics and an inbound messages inbox, publishing through the Outstand scheduling API."],
-  ["Email marketing, our own Mailchimp", "client newsletters with lists, segments, signup forms, templates, A/B and multivariate tests, automations and scheduled sends, delivered through Resend."],
+  ["Email marketing, our own Mailchimp", "client newsletters with lists, segments, signup forms, templates, A/B and multivariate tests, automations and scheduled sends, delivered through Amazon SES or SendGrid."],
   ["SEO platform and reporting centre", "rank and local grid tracking (DataForSEO), SE Ranking, Search Console, GA4 and Google Business Profile data, AI search visibility tracking, and shareable monthly client reports."],
   ["Task management", "subtasks, recurring tasks, followers, time tracking and timesheets, a daily planner, and ClickUp import and sync."],
   ["Docs and files", "a collaborative document editor (Tiptap), whiteboards (Excalidraw), PDF comments and e-signatures, and file storage on Cloudflare R2 with transcription and sharing."],
@@ -161,7 +161,8 @@ export default function Resume() {
             Built <A href="https://app.sway.ca">Sway AI</A>, the management system the whole Sway team runs on, bringing
             social, email, SEO, tasks and docs into one app. Built through a multi-agent build-and-review process: 3,800+
             commits, 222 merged pull requests, 366 database tables and 900+ test files since May 2026, on Next.js,
-            TypeScript and Convex, with 64 scheduled background jobs and an Electron desktop app.
+            TypeScript and Convex, with 64 scheduled background jobs and an Electron desktop app (
+            <A href="/projects/sway-ai">how it&apos;s built</A>).
             <ul className="mt-2 list-[circle] pl-5 space-y-1">
               {swayAi.map(([k, v]) => (
                 <li key={k}>

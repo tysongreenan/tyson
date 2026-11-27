@@ -13,6 +13,8 @@ export type Project = {
    * their domain, leave this unset and point `href` at my own deployment instead.
    */
   live?: string;
+  /** A page on this site that explains how it's built. */
+  detail?: string;
   /** Public source code. Never set this for a private repo. */
   source?: string;
   /** When the project started, YYYY-MM. */
@@ -162,6 +164,7 @@ export const swayTools: Project[] = [
     date: "2026-05",
     title: "Sway AI",
     href: "https://app.sway.ca",
+    detail: "/projects/sway-ai",
     mark: "/projects/sway.svg",
     blurb:
       "The management system the whole Sway team runs on: social scheduling, client email marketing, an SEO and reporting centre, tasks, docs and meetings. Its own agent harness decides approvals from what the AI has read, picks the cheapest model that passed its test, and keeps agent runs crash-safe.",

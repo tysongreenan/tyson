@@ -43,6 +43,11 @@ function ProjectList({ items }: { items: Project[] }) {
               {p.href ? <A href={p.href}>{p.title}</A> : <span className="text-rurikon-600">{p.title}</span>}
               {p.live ? <Live url={p.live} /> : null}
               {p.status ? <span className="text-[0.8em] text-rurikon-400">{p.status}</span> : null}
+              {p.detail ? (
+                <span className="text-[0.8em] text-rurikon-400">
+                  <A href={p.detail}>how it&apos;s built</A>
+                </span>
+              ) : null}
               {p.source ? (
                 <span className="text-[0.8em] text-rurikon-400">
                   <A href={p.source}>source</A>
