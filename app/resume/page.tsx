@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { A } from "@/components/a";
 import { PrintButton } from "@/components/print-button";
-import { current, earlier, education, previous } from "@/content/experience";
+import { current, earlier, education, highlights, previous } from "@/content/experience";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -138,6 +138,14 @@ export default function Resume() {
         </p>
       </Section>
 
+      <Section id="highlights" title="Highlights">
+        <ul className="mt-4 list-disc pl-5 marker:text-rurikon-200 space-y-2">
+          {highlights.map((h) => (
+            <li key={h}>{h}</li>
+          ))}
+        </ul>
+      </Section>
+
       <Section id="experience" title="Experience">
         <p className="mt-4">
           <span className="font-semibold text-rurikon-600">{current.title}</span>,{" "}
@@ -150,8 +158,9 @@ export default function Resume() {
         <ul className="mt-4 list-disc pl-5 marker:text-rurikon-200 space-y-3">
           <li>
             Built <A href="https://app.sway.ca">Sway AI</A>, the management system the whole Sway team runs on, bringing
-            social, email, SEO, tasks and docs into one app. 3,800+ commits since May 2026 on Next.js, TypeScript and
-            Convex, with 64 scheduled background jobs and an Electron desktop app.
+            social, email, SEO, tasks and docs into one app. Built through a multi-agent build-and-review process: 3,800+
+            commits, 222 merged pull requests, 366 database tables and 900+ test files since May 2026, on Next.js,
+            TypeScript and Convex, with 64 scheduled background jobs and an Electron desktop app.
             <ul className="mt-2 list-[circle] pl-5 space-y-1">
               {swayAi.map(([k, v]) => (
                 <li key={k}>

@@ -1,5 +1,5 @@
 import { apps, clients, products, swayTools, type Project } from "@/content/projects";
-import { current, earlier, education, previous } from "@/content/experience";
+import { current, earlier, education, highlights, previous } from "@/content/experience";
 import { currentStack, site, skills } from "@/content/site";
 import { mcpPath, toolkit, usageNote } from "@/content/toolkit";
 import { getOtherRepos } from "@/lib/github";
@@ -32,6 +32,9 @@ export async function GET() {
     "Developer and digital marketer at Sway Advertising, a creative agency in Guelph, Ontario. Works on SEO, AI in the agency's workflows, Sway's internal software, and client websites. Also builds and runs his own side products.",
     "",
     `Current stack: ${currentStack}`,
+    "",
+    "## Highlights",
+    ...highlights.map((h) => `- ${h}`),
     "",
     "## Experience",
     ...[current, ...previous].map(
