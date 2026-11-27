@@ -22,8 +22,9 @@ function Section({ id, title, children }: { id: string; title: string; children:
 }
 
 const harness = [
-  "A durable run engine with leases, heartbeats, crash recovery and cancellation, so long agent jobs survive restarts.",
-  "81 tool modules, from tasks, mail and calendar to Webflow and Canva, with approval required in code before any email, post, publish or delete.",
+  "A durable run engine: 15-minute leases sized to the platform's 10-minute action limit, a recovery job that resumes or expires dead runs, and idempotent side effects, so a retry never repeats a paid outside call.",
+  "About 180 tools across 56 modules, from tasks, mail and calendar to Webflow and Canva, with approval required in code before any email, post, publish or delete.",
+  "Loop guards: repeated writes in one turn are blocked and pointed to a bulk tool (after an incident where 89 update calls landed once and the agent said \"all done\"), and replies that claim changes no tool made are corrected.",
   "Job playbooks (call prep, content calendars, review replies) with verifier subagents that check the work.",
   "Per-client memory, context compaction, scheduled routines, model choice through OpenRouter, and its own MCP server; the desktop app can run on a person's own Claude or Grok login.",
   "Scored model tests on real jobs and a 4,500-test suite.",

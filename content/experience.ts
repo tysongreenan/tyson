@@ -97,10 +97,11 @@ export const education = [
 
 /** Verified highlights from the repos (docs, tests, commit history, SEO trackers). Shown near the top of the resume. */
 export const highlights: string[] = [
-  "Built a grounded client knowledge base for Sway AI that scores 30 of 31 on a golden-question eval, mostly on low-cost models (Haiku), at about $0.25 per full eval run. Every stored fact must quote its source, the code checks the quote, and a second model flags misreads.",
-  "Ran an 8-model bake-off on 4 real Webflow editing jobs (32 runs) to choose models on cost and success, and traced why cheap models failed. The whole Sway AI platform runs on about $1.76 a day in AI spend.",
-  "Built prompt-injection defences into Sway AI: emails, transcripts and files are treated as untrusted, and while they are in play, risky actions always need human approval. A test proves the approval gate holds against an injected command.",
-  "Built MCP servers into four products (Website Feedback, Cookie Banner, Evergreen OS, Gryphon). Evergreen's gives each person a revocable token and lets agents draft but never submit, approve or delete.",
+  "Built a grounded client knowledge base for Sway AI that scores 30 of 31 on a golden-question eval, mostly on low-cost models (Haiku), at about $0.25 per full eval run. Code keeps a fact only if its quote and numbers appear word for word in the source; a second model then checks it.",
+  "Choose models on evidence: an 8-model bake-off on 4 real Webflow jobs (32 runs), and about 40 background jobs each mapped to the cheapest model that passed its test, with the test cited in code. Fact checking moved to Sonnet after Haiku stalled at 24 of 30. The whole platform runs on about $1.76 a day in AI spend.",
+  "Token economics in code: the prompt budget recalibrates every step from the model's reported token counts to stay under Haiku's 100K price step, after 13 of 44 routine steps had crossed it. Oversized tool results are stored whole and summarized, and long chats are compacted.",
+  "Approvals follow what the model has read, not what it says: once a transcript, file or email is in a chat, standing approvals switch off and high-reach tools ask every time. A test shows an injected write held as pending with the page unchanged.",
+  "Built MCP servers into four products (Website Feedback, Cookie Banner, Evergreen OS, Gryphon) and an MCP client with OAuth in Sway AI. Evergreen's server gives each person a revocable token and lets agents draft but never submit, approve or delete.",
   "Shipped an agent that turns reviewer comments into pull requests on a client's real repo (Website Feedback), and measured its cost on live runs.",
   "Security and performance: took Sway AI from 15 known vulnerabilities (6 high) to 0; isolated Website Feedback's proxy of third-party pages on a cookieless domain with per-redirect SSRF checks; cut a 4-second LCP delay on Cookie Banner.",
   "Client SEO at Sway: Blue Jay Irrigation #8 to #1 for \"irrigation\" (8,100 searches a month); Grapids Irrigation unranked to #5 for \"sprinkler system repair\" (20,100 a month) with branded clicks up 63%; The Junction's site health 74% to 90%.",
