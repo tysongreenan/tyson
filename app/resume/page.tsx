@@ -34,7 +34,7 @@ const swayAi: [string, string][] = [
   ["Social media manager", "content calendar, posting queue, client approvals, best-time suggestions, analytics and an inbound messages inbox, publishing through the Outstand scheduling API."],
   ["Email marketing, our own Mailchimp", "client newsletters with lists, segments, signup forms, templates, A/B and multivariate tests, automations and scheduled sends, delivered through Amazon SES or SendGrid."],
   ["SEO platform and reporting centre", "rank and local grid tracking (DataForSEO), SE Ranking, Search Console, GA4 and Google Business Profile data, AI search visibility tracking, and shareable monthly client reports."],
-  ["Task management", "subtasks, recurring tasks, followers, time tracking and timesheets, a daily planner, and ClickUp import and sync."],
+  ["Task management", "subtasks, recurring tasks, followers, time tracking and timesheets, a daily planner, and a ClickUp import that brought in 6,236 existing tasks."],
   ["Docs and files", "a collaborative document editor (Tiptap), whiteboards (Excalidraw), PDF comments and e-signatures, and file storage on Cloudflare R2 with transcription and sharing."],
   ["Meetings, mail and research", "a Recall.ai meeting bot with transcripts and call notes, Outlook mail and calendar through Microsoft Graph, a client portal, and a research workspace for social and SEO."],
 ];

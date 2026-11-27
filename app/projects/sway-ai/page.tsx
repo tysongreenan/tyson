@@ -41,6 +41,7 @@ const harness = [
   "Token economics: a prompt budget recalibrated each step from the model's real token counts to stay under a long-context price step; oversized tool results are stored whole and summarized; long chats are compacted.",
   "Loop guards against repeated writes and against replies that claim changes no tool made.",
   "Its own MCP server (hashed, revocable keys, role re-checked on every call) and an MCP client with OAuth for outside apps.",
+  "Checks beyond the model: type checks, about 900 test files and scripted agent-loop tests, plus custom lint rules for auth gates, storage access and design drift.",
 ];
 
 export default function SwayAiBuild() {
@@ -75,7 +76,9 @@ export default function SwayAiBuild() {
       </Section>
 
       <Section id="open-source" title="Open-source projects it's built on">
-        <p className="mt-3 text-rurikon-400">From the app&apos;s and the desktop app&apos;s dependencies.</p>
+        <p className="mt-3 text-rurikon-400">
+          Each one is imported in the app&apos;s or the desktop app&apos;s code, not just listed as a dependency.
+        </p>
         {openSource.map((g) => (
           <div key={g.title} className="mt-6">
             <h3 className="text-rurikon-600">{g.title}</h3>
@@ -90,7 +93,8 @@ export default function SwayAiBuild() {
 
       <Section id="services" title="Services and APIs it connects to">
         <p className="mt-3 text-rurikon-400">
-          Names only. The credentials for each live in Sway&apos;s deployment and are never published.
+          Checked against production on Nov 26, 2026: each one below has live credentials or real usage. Names only;
+          the credentials stay in Sway&apos;s deployment and are never published.
         </p>
         {services.map((g) => (
           <div key={g.title} className="mt-6">

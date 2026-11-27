@@ -9,9 +9,8 @@ export type Group = { title: string; items: Item[] };
 export const architecture: Item[] = [
   { name: "Web app", note: "Next.js App Router and React, hosted on Railway." },
   { name: "Backend", note: "Convex: the database (366 tables), server functions, real-time sync and 64 scheduled jobs." },
-  { name: "Desktop app", note: "Electron shell around the web app, which can hand AI turns to the person's own Claude Code, Codex or Grok login." },
+  { name: "Desktop app", note: "Electron shell around the web app, which can hand AI turns to the person's own Claude Code or Grok login." },
   { name: "Edge workers", note: "Three Cloudflare Workers: serving files from R2, newsletter link tracking, and copying SharePoint files." },
-  { name: "Research worker", note: "A Node service that drives Browserbase browsers for web research." },
   { name: "Agent harness", note: "Built in-house on Convex: durable runs, about 180 tools, approvals decided in code, evidence-based model routing." },
 ];
 
@@ -31,13 +30,6 @@ export const openSource: Group[] = [
     ],
   },
   {
-    title: "AI",
-    items: [
-      { name: "AI SDK", href: "https://ai-sdk.dev", note: "streaming and model calls in the UI" },
-      { name: "Harper", href: "https://github.com/Automattic/harper", note: "on-device grammar checking" },
-    ],
-  },
-  {
     title: "Editors and canvases",
     items: [
       { name: "Tiptap", href: "https://tiptap.dev", note: "document editor" },
@@ -47,6 +39,7 @@ export const openSource: Group[] = [
       { name: "React Flow", href: "https://reactflow.dev", note: "node canvases" },
       { name: "react-markdown", href: "https://github.com/remarkjs/react-markdown", note: "rendering AI replies" },
       { name: "lowlight", href: "https://github.com/wooorm/lowlight", note: "code highlighting" },
+      { name: "Harper", href: "https://github.com/Automattic/harper", note: "on-device grammar checking" },
     ],
   },
   {
@@ -120,7 +113,7 @@ export const services: Group[] = [
   {
     title: "AI models",
     items: [
-      { name: "OpenRouter", href: "https://openrouter.ai", note: "one gateway to Claude, GPT, Gemini, DeepSeek, Grok and more" },
+      { name: "OpenRouter", href: "https://openrouter.ai", note: "one gateway to Claude, GPT, Gemini, DeepSeek, Grok and more; 90,878 calls so far" },
       { name: "OpenAI API", href: "https://platform.openai.com", note: "embeddings for file search and memory" },
       { name: "TypeSafe", note: "the small classifier model that helps route chat to a model tier" },
     ],
@@ -129,13 +122,11 @@ export const services: Group[] = [
     title: "SEO, reviews and research",
     items: [
       { name: "DataForSEO", href: "https://dataforseo.com", note: "rank tracking and local grids" },
-      { name: "SE Ranking", href: "https://seranking.com", note: "rankings and audits, also through its MCP server" },
+      { name: "SE Ranking", href: "https://seranking.com", note: "rankings and audits" },
       { name: "Google Search Console", href: "https://developers.google.com/webmaster-tools", note: "search performance" },
       { name: "Google Analytics 4", href: "https://developers.google.com/analytics", note: "traffic" },
-      { name: "Google Business Profile", href: "https://developers.google.com/my-business", note: "local listings and reviews" },
-      { name: "PageSpeed Insights", href: "https://developers.google.com/speed/docs/insights/v5/get-started", note: "performance checks" },
-      { name: "Yelp, Tripadvisor, Expedia and ServiceTitan", note: "customer reviews for clients" },
-      { name: "Supadata", href: "https://supadata.ai", note: "video transcripts for social research" },
+      { name: "Google Business Profile", href: "https://developers.google.com/my-business", note: "local listings, posts and reviews; 30 client profiles connected" },
+      { name: "PageSpeed Insights", href: "https://developers.google.com/speed/docs/insights/v5/get-started", note: "performance checks, on the free tier" },
       { name: "Browserbase", href: "https://www.browserbase.com", note: "cloud browsers for research" },
     ],
   },
@@ -143,9 +134,9 @@ export const services: Group[] = [
     title: "Social and email",
     items: [
       { name: "Outstand", note: "social post scheduling and publishing" },
-      { name: "Meta, LinkedIn, X, TikTok, Pinterest and YouTube", note: "account connections, analytics and research" },
-      { name: "Amazon SES", href: "https://aws.amazon.com/ses/", note: "client newsletter delivery" },
-      { name: "SendGrid", href: "https://sendgrid.com", note: "client newsletter delivery" },
+      { name: "Meta, LinkedIn and YouTube", note: "account connections are set up; Google Business Profile is the active channel today" },
+      { name: "Amazon SES", href: "https://aws.amazon.com/ses/", note: "client newsletter delivery (the default)" },
+      { name: "SendGrid", href: "https://sendgrid.com", note: "set up as a per-client alternative for newsletters" },
       { name: "Resend", href: "https://resend.com", note: "sign-in and notification email" },
     ],
   },
@@ -153,10 +144,10 @@ export const services: Group[] = [
     title: "Work tools",
     items: [
       { name: "Microsoft Graph", href: "https://learn.microsoft.com/graph/", note: "Outlook mail and calendar, SharePoint and OneDrive files, Entra ID sign-in" },
-      { name: "Recall.ai", href: "https://www.recall.ai", note: "meeting bot, recordings and transcripts" },
-      { name: "ClickUp", href: "https://developer.clickup.com", note: "task import and sync" },
+      { name: "Recall.ai", href: "https://www.recall.ai", note: "meeting bot, recordings and transcripts; 273 meetings recorded" },
+      { name: "ClickUp", href: "https://developer.clickup.com", note: "imported 6,236 existing tasks into Sway AI" },
       { name: "GitHub", href: "https://docs.github.com/rest", note: "in-app feedback becomes issues" },
-      { name: "Webflow, Canva and HubSpot", note: "connected to the agent through their MCP servers" },
+      { name: "Webflow and Canva", note: "connected to the agent through their MCP servers" },
     ],
   },
   {
@@ -165,8 +156,7 @@ export const services: Group[] = [
       { name: "Convex Cloud", href: "https://www.convex.dev", note: "backend hosting" },
       { name: "Railway", href: "https://railway.com", note: "web app hosting" },
       { name: "Cloudflare R2 and Workers", href: "https://developers.cloudflare.com/r2/", note: "file storage and edge workers" },
-      { name: "PostHog", href: "https://posthog.com", note: "product analytics, also through its MCP server" },
-      { name: "Google sign-in", note: "staff and client accounts" },
+      { name: "PostHog", href: "https://posthog.com", note: "connected to the agent through its MCP server" },
     ],
   },
 ];
