@@ -21,3 +21,11 @@ The "other projects" list is fetched from GitHub at build time and revalidated d
 pnpm install
 pnpm dev
 ```
+
+## Token counter
+
+`pnpm tokens` recounts tokens from T3 Code's usage cache and writes `content/token-usage.json`.
+A LaunchAgent on the MacBook (`~/Library/LaunchAgents/com.tysongreenan.token-counter.plist`) runs
+`scripts/update-token-counter.sh` daily at 6:00 from its own clone in
+`~/Library/Application Support/tyson-token-counter/repo`, and pushes to `main` only when the total changed.
+Log: `~/Library/Logs/token-counter.log`. Run it now: `launchctl kickstart -k gui/$(id -u)/com.tysongreenan.token-counter`.
