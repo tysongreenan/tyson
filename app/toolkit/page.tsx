@@ -17,7 +17,7 @@ export default function Toolkit() {
         build and ship code. The tools come from what my agents actually call, not a wish list.
       </p>
       <p className="mt-3 text-[0.85em] text-rurikon-400">{usageNote}</p>
-      <TokenCounter className="mt-6" />
+      <TokenCounter className="mt-6 xl:hidden" />
 
       <section aria-labelledby="connect" className="mt-10">
         <h2 id="connect" className="font-semibold text-rurikon-600 scroll-mt-6 sm:scroll-mt-14">

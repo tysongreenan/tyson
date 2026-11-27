@@ -3,6 +3,7 @@ import { ViewTransition } from "react";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { Nav } from "@/components/nav";
+import { TokenCounter } from "@/components/token-counter";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -37,6 +38,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <ViewTransition>{children}</ViewTransition>
             </article>
           </main>
+          {/* Beside the page on wide screens only; About and Toolkit show it inline below that width. */}
+          <aside aria-label="Token counter" className="hidden xl:block ml-14 w-64 shrink-0 print:hidden">
+            <div className="sticky top-14">
+              <TokenCounter variant="side" />
+            </div>
+          </aside>
         </div>
         <Analytics />
       </body>

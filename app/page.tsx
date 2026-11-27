@@ -34,7 +34,7 @@ export default function About() {
         Outside of work I am usually on another side project, or out walking with my dog Luna.
       </p>
 
-      <TokenCounter className="mt-10" />
+      <TokenCounter className="mt-10 xl:hidden" />
 
       <h2 id="skills" className="font-semibold mt-14 mb-7 text-rurikon-600 scroll-mt-6 sm:scroll-mt-14">
         Skills

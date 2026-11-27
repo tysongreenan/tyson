@@ -127,6 +127,69 @@ main {
   }
 }
 
+/* Token counter card. On wide screens it sits beside the page, sticky, with a soft glow border. */
+.token-card {
+  border: 1px solid var(--color-rurikon-border);
+  border-radius: 0.5rem;
+  padding: 0.875rem 1rem;
+  background: var(--background);
+}
+.token-card-side {
+  position: relative;
+  isolation: isolate;
+  /* A faint gradient ring drawn with a masked pseudo-element, so the card itself stays plain. */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(160deg in oklch, oklch(0.75 0.12 160 / 0.6), transparent 45%, oklch(0.7 0.1 250 / 0.4));
+    mask:
+      linear-gradient(black, black) content-box,
+      linear-gradient(black, black);
+    mask-composite: exclude;
+  }
+}
+
+/* Odometer: each digit is a strip of 0-9 twice, clipped to one line and translated to its digit.
+   The final position is the default, so with reduced motion (or no animation support) it simply shows the number. */
+.odometer {
+  display: inline-flex;
+  height: 1lh;
+  line-height: 1.15;
+  overflow: clip;
+  font-variant-numeric: tabular-nums;
+  mask: linear-gradient(transparent, black 22%, black 78%, transparent);
+}
+.odometer-strip {
+  display: flex;
+  flex-direction: column;
+  translate: 0 calc((10 + var(--d)) * -1lh);
+}
+.odometer-strip > span,
+.odometer-sep {
+  height: 1lh;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .odometer-strip {
+    --stagger: 55ms;
+    animation: odometer-roll 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(var(--i) * var(--stagger));
+  }
+  /* Literal time in @supports, never var(), so the check is real (dynamic-sibling-animations). */
+  @supports (animation-delay: calc(sibling-index() * 0.1s)) {
+    .odometer-strip {
+      animation-delay: calc(sibling-index() * var(--stagger));
+    }
+  }
+}
+@keyframes odometer-roll {
+  from {
+    translate: 0 0;
+  }
+}
 /* Page crossfade between routes, off for people who ask for less motion (same-document-transitions). */
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*),
