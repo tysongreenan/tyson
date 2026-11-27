@@ -43,13 +43,13 @@ const products: { name: string; href: string; body: string; stack: string }[] = 
   {
     name: "Signoff",
     href: "https://signoff.greenantyson.workers.dev",
-    body: "Company-wide email signatures for Outlook and Gmail, filled from Microsoft 365 or Google Workspace directories. Directory webhooks keep signatures current, and an Outlook add-in applies them. In production with its first client.",
+    body: "Company-wide email signatures for Outlook and Gmail, filled from Microsoft 365 or Google Workspace directories, in production with its first client. Version-guarded atomic writes on D1 (which has no transactions), Microsoft Graph webhooks renewed before they expire, an admin-consent flow that proves the tenant, and an Outlook add-in. Imported signatures become templates through a deterministic alignment, so no staff data goes to a model.",
     stack: "Next.js on Cloudflare Workers, D1, R2, Microsoft Graph, Entra ID, Gmail API",
   },
   {
     name: "Cookie Banner",
     href: "https://cookie-banner.ca",
-    body: "Consent banner builder for PIPEDA, Quebec Law 25, GDPR and CCPA, built with Emily Trenchard. Started as an open source GDPR tool in 2025 and now runs as a product.",
+    body: "Consent banner builder for PIPEDA, Quebec Law 25, GDPR and CCPA, built with Emily Trenchard. Consent Mode defaults go out before any tag, Global Privacy Control is read from the header and the browser, and each banner is cached at the edge per region with purge on save. Fixed a production bug where pasted snippets wiped Google Tag Manager's data layer.",
     stack: "Next.js, Supabase, Prisma, Stripe, AI SDK, Sentry",
   },
   {
@@ -74,13 +74,13 @@ const products: { name: string; href: string; body: string; stack: string }[] = 
 
 const clientWork: { name: string; href: string; what: string; stack: string; status: string }[] = [
   { name: "Sway Advertising", href: "https://sway.ca", what: "The agency's own site, moved from a Webflow export to a fast static site on Vercel", stack: "HTML, CSS, JS, Vercel, PostHog", status: "Live" },
-  { name: "Nova Golf Media", href: "https://novagolfmedia.com", what: "Golf media site with video, fed by its own Payload CMS so editors publish without a deploy", stack: "Next.js, Payload, Clerk, Mux", status: "Live, just launched" },
+  { name: "Nova Golf Media", href: "https://novagolfmedia.com", what: "Golf media site with video and its own Payload CMS. Advisory locks fixed a migration race that took down a deploy, and AI agents can draft through MCP but never publish, enforced at the hook layer and tested", stack: "Next.js, Payload, Clerk, Mux", status: "Live, just launched" },
   { name: "WrightHaven Homes", href: "https://wrighthavenhomes.com", what: "Home builder site moved off WordPress to a fast static build", stack: "HTML, CSS, JS, Vercel", status: "Live" },
   { name: "Lively Leadership Group", href: "https://livelyleadership.com", what: "Coaching and consulting site", stack: "TanStack Start, Postgres, Kysely, Better Auth", status: "Live" },
   { name: "Birch Island Cottage", href: "https://birchislandcottage.ca", what: "Cottage rental site with maps and inquiry email", stack: "Next.js, Google Maps, Resend", status: "Live" },
   { name: "Trevalli Homes", href: "https://trevalli-homes.vercel.app", what: "Marketing site for a boutique Southern Ontario home builder", stack: "Next.js, shadcn/ui, Tailwind, MapLibre", status: "Launching soon" },
   { name: "Miller Waste Systems", href: "https://miller-waste-systems.vercel.app", what: "Next.js rebuild of a waste and recycling company's WordPress site", stack: "Next.js, React, SendGrid", status: "Launching soon" },
-  { name: "Evergreen OS", href: "https://evergreen-os-henna.vercel.app", what: "Construction project management: timesheets, safety records, daily reports, estimates and approvals, with roles and a phone layout", stack: "Next.js, Convex, AWS S3", status: "Launching soon" },
+  { name: "Evergreen OS", href: "https://evergreen-os-henna.vercel.app", what: "Construction project management on Convex: timesheets to payroll export, safety and field records, approvals. Offline saves replay idempotently, every write is re-checked server-side by role (287 rule cases), exported payroll is locked, and agents get draft-only MCP tokens", stack: "Next.js, Convex, AWS S3", status: "Launching soon" },
   { name: "CareManager", href: "https://jenuine-care-saas.vercel.app", what: "Home healthcare platform for Jenuine Care: patients, nurse assignments, scheduling, timesheets, billing", stack: "Next.js, Postgres, Prisma, Clerk, Stripe", status: "Launching soon" },
   { name: "Radius", href: "https://xray-marketplace.vercel.app", what: "Marketplace for used diagnostic imaging equipment with listing verification and fair-price ranges", stack: "Next.js, Prisma, Postgres, Supabase", status: "Prototype" },
 ];
